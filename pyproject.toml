@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "d-chris-github-io"
+version = "0.0.0"
+description = "github pages for d-chris.github.io"
+authors = ["Christoph Dörrer <d-chris@web.de>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+mkdocs = "^1.5.3"
+mkdocs-material = "^9.5.3"
+mkdocstrings = { extras = ["python"], version = "^0.24.0" }
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
