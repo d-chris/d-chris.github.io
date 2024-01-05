@@ -79,13 +79,26 @@ pathlibutil    </h1>
 <li><code>Path().copy()</code> copy a file or directory to a new path destination</li>
 <li><code>Path().delete()</code> delete a file or directory-tree</li>
 <li><code>Path().move()</code> move a file or directory to a new path destination</li>
-<li><code>Path().make_archive()</code> create and <code>Path().unpack_archive()</code> an archive from a file or directory</li>
+<li><code>Path().make_archive()</code> creates and <code>Path().unpack_archive()</code> uncompresses an archive from a file or directory</li>
+<li><code>Path.archive_formats</code> to get all available archive formats</li>
 </ul>
 
 <h2 id="installation">Installation</h2>
 
 <div class="pdoc-code codehilite">
 <pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>pathlibutil
+</code></pre>
+</div>
+
+<h3 id="7zip-support">7zip support</h3>
+
+<p>to handle 7zip archives, an extra package <code>py7zr&gt;=0.20.2</code> is required!</p>
+
+<p><a href="https://pypi.org/project/py7zr/"><img src="https://img.shields.io/pypi/v/py7zr?logo=python&logoColor=white&label=py7zr&color=FFFF33" alt="PyPI - Version" /></a></p>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="c1"># install as extra dependency</span>
+pip<span class="w"> </span>install<span class="w"> </span>pathlibutil<span class="o">[</span>7z<span class="o">]</span>
 </code></pre>
 </div>
 
@@ -214,44 +227,74 @@ pathlibutil    </h1>
 <h2 id="example-5">Example 5</h2>
 
 <p>Inherit from <code>pathlibutil.Path</code> to register new a archive format.
-Specify a <code>name</code> as keyword argument in the new subclass, which has to be the suffix of the archives.
+Specify a <code>archive</code> as keyword argument in the new subclass, which has to be the suffix without <code>.</code> of the archives.
 Implement a classmethod <code>_register_archive_format()</code> to register new archive formats.</p>
 
 <blockquote>
-  <p><code>Path().make_archive()</code> and <code>Path().move()</code></p>
+  <p><code>Path().make_archive()</code>, <code>Path.archive_formats</code> and <code>Path().move()</code></p>
 </blockquote>
 
 <div class="pdoc-code codehilite">
 <pre><span></span><code><span class="kn">import</span> <span class="nn">shutil</span>
 <span class="kn">import</span> <span class="nn">pathlibutil</span>
 
-<span class="k">class</span> <span class="nc">RegisterRarFormat</span><span class="p">(</span><span class="n">pathlibutil</span><span class="o">.</span><span class="n">Path</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;rar&#39;</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">RegisterFooBarFormat</span><span class="p">(</span><span class="n">pathlibutil</span><span class="o">.</span><span class="n">Path</span><span class="p">,</span> <span class="n">archive</span><span class="o">=</span><span class="s1">&#39;foobar&#39;</span><span class="p">):</span>
       <span class="nd">@classmethod</span>
       <span class="k">def</span> <span class="nf">_register_archive_format</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
 <span class="w">      </span><span class="sd">&quot;&quot;&quot; </span>
-<span class="sd">            implement new register functions for given `name`</span>
+<span class="sd">            implement new register functions for given `archive`</span>
 <span class="sd">      &quot;&quot;&quot;</span>
-            <span class="k">try</span><span class="p">:</span>
-                  <span class="kn">from</span> <span class="nn">pyunpack</span> <span class="kn">import</span> <span class="n">Archive</span>
-            <span class="k">except</span> <span class="ne">ModuleNotFoundError</span><span class="p">:</span>
-                  <span class="k">raise</span> <span class="ne">ModuleNotFoundError</span><span class="p">(</span><span class="s1">&#39;pip install pyunpack&#39;</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                  <span class="n">shutil</span><span class="o">.</span><span class="n">register_archive_format</span><span class="p">(</span>
-                        <span class="s1">&#39;rar&#39;</span><span class="p">,</span> <span class="n">Archive</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;rar archive&#39;</span>
-                  <span class="p">)</span>
-                  <span class="n">shutil</span><span class="o">.</span><span class="n">register_unpack_format</span><span class="p">(</span>
-                        <span class="s1">&#39;rar&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;.rar&#39;</span><span class="p">],</span> <span class="n">Archive</span>
-                  <span class="p">)</span>
+      <span class="k">try</span><span class="p">:</span>
+            <span class="kn">import</span> <span class="o">&lt;</span><span class="n">required_package_name</span><span class="o">&gt;</span>
+      <span class="k">except</span> <span class="ne">ModuleNotFoundError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ModuleNotFoundError</span><span class="p">(</span>
+                  <span class="s1">&#39;pip install &lt;required_package_name&gt;&#39;</span>
+            <span class="p">)</span>
+
+      <span class="k">def</span> <span class="nf">pack_foobar</span><span class="p">(</span><span class="n">base_name</span><span class="p">,</span> <span class="n">base_dir</span><span class="p">,</span> <span class="n">owner</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dry_run</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;callable that will be used to unpack archives.</span>
+
+<span class="sd">            Args:</span>
+<span class="sd">                  base_name (`str`): name of the file to create</span>
+<span class="sd">                  base_dir (`str`): directory to start archiving from, defaults to `os.curdir`</span>
+<span class="sd">                  owner (`Any`, optional): as passed in `make_archive(*args, owner=None, **kwargs)`. Defaults to None.</span>
+<span class="sd">                  group (`Any`, optional): as passed in `make_archive(*args, group=None, **kwargs)`. Defaults to None.</span>
+<span class="sd">                  dry_run (`Any`, optional): as passed in `make_archive(*args, dry_run=None, **kwargs)`. </span>
+<span class="sd">                        Defaults to None.</span>
+<span class="sd">                  logger (`logging.Logger`, optional): as passed in `make_archive(*args, logger=None, **kwargs)`. </span>
+<span class="sd">                        Defaults to None.</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;implement your own pack function&#39;</span><span class="p">)</span>
+
+      <span class="k">def</span> <span class="nf">unpack_foobar</span><span class="p">(</span><span class="n">archive</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">extra_args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;callable that will be used to unpack archives. </span>
+
+<span class="sd">            Args:</span>
+<span class="sd">                  archive (`str`): path of the archive</span>
+<span class="sd">                  path (`str`): directory the archive must be extracted to</span>
+<span class="sd">                  filter (`Any`, optional): as passed in `unpack_archive(*args, filter=None, **kwargs)`.</span>
+<span class="sd">                        Defaults to None.</span>
+<span class="sd">                  extra_args (`Sequence[Tuple[name, value]]`, optional): additional keyword arguments. </span>
+<span class="sd">                        as passd in `register_unpack_format(*args, extra_args=None, **kwargs)`. Defaults to None.</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;implement your own unpack function&#39;</span><span class="p">)</span>
+
+      <span class="n">shutil</span><span class="o">.</span><span class="n">register_archive_format</span><span class="p">(</span>
+            <span class="s1">&#39;foobar&#39;</span><span class="p">,</span> <span class="n">pack_foobar</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;foobar archives&#39;</span>
+      <span class="p">)</span>
+      <span class="n">shutil</span><span class="o">.</span><span class="n">register_unpack_format</span><span class="p">(</span>
+            <span class="s1">&#39;foobar&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;.foo.bar&#39;</span><span class="p">],</span> <span class="n">unpack_foobar</span>
+      <span class="p">)</span>
 
 <span class="n">file</span> <span class="o">=</span> <span class="n">pathlibutil</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;README.md&#39;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;available archive formats: </span><span class="si">{</span><span class="n">file</span><span class="o">.</span><span class="n">archive_formats</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-<span class="n">archive</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">make_archive</span><span class="p">(</span><span class="s1">&#39;README.rar&#39;</span><span class="p">)</span>
+<span class="n">archive</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">make_archive</span><span class="p">(</span><span class="s1">&#39;README.foo.bar&#39;</span><span class="p">)</span>
 
 <span class="n">backup</span> <span class="o">=</span> <span class="n">archive</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="s1">&#39;./backup/&#39;</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;rar archive created: </span><span class="si">{</span><span class="n">archive</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1"> and moved to: </span><span class="si">{</span><span class="n">backup</span><span class="o">.</span><span class="n">parent</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;archive created: </span><span class="si">{</span><span class="n">archive</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1"> and moved to: </span><span class="si">{</span><span class="n">backup</span><span class="o">.</span><span class="n">parent</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </code></pre>
 </div>
 </div>
