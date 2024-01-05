@@ -30,6 +30,8 @@
     <li><a href="#example-1">Example 1</a></li>
     <li><a href="#example-2">Example 2</a></li>
     <li><a href="#example-3">Example 3</a></li>
+    <li><a href="#example-4">Example 4</a></li>
+    <li><a href="#example-5">Example 5</a></li>
   </ul></li>
 </ul>
 
@@ -59,7 +61,10 @@ pathlibutil    </h1>
 <a href="https://pypi.org/project/pathlibutil/"><img src="https://img.shields.io/pypi/v/pathlibutil" alt="PyPI" /></a>
 <a href="https://pypi.org/project/pathlibutil/"><img src="https://img.shields.io/pypi/dm/pathlibutil" alt="PyPI - Downloads" /></a>
 <a href="https://raw.githubusercontent.com/d-chris/pathlibutil/main/LICENSE"><img src="https://img.shields.io/pypi/l/pathlibutil" alt="PyPI - License" /></a>
-<a href="https://github.com/d-chris/pathlibutil/actions/workflows/pytest.yml"><img src="https://img.shields.io/github/actions/workflow/status/d-chris/pathlibutil/pytest.yml?logo=github&label=pytest" alt="GitHub Workflow Test)" /></a></p>
+<a href="https://github.com/d-chris/pathlibutil/actions/workflows/pytest.yml"><img src="https://img.shields.io/github/actions/workflow/status/d-chris/pathlibutil/pytest.yml?logo=github&label=pytest" alt="GitHub Workflow Test)" /></a>
+<a href="https://d-chris.github.io/pathlibutil"><img src="https://img.shields.io/website?url=https%3A%2F%2Fd-chris.github.io%2Fpathlibutil&up_message=pdoc&logo=github&label=documentation" alt="Website" /></a>
+<a href="https://github.com/d-chris/pathlibutil"><img src="https://img.shields.io/github/v/tag/d-chris/pathlibutil?logo=github&label=github" alt="GitHub tag (with filter)" /></a>
+<a href="https://d-chris.github.io/pathlibutil/htmlcov"><img src="https://img.shields.io/website?url=https%3A%2F%2Fd-chris.github.io%2Fpathlibutil%2Fhtmlcov&up_message=available&down_message=missing&logo=codecov&label=coverage" alt="Coverage" /></a></p>
 
 <hr />
 
@@ -74,6 +79,7 @@ pathlibutil    </h1>
 <li><code>Path().copy()</code> copy a file or directory to a new path destination</li>
 <li><code>Path().delete()</code> delete a file or directory-tree</li>
 <li><code>Path().move()</code> move a file or directory to a new path destination</li>
+<li><code>Path().make_archive()</code> create and <code>Path().unpack_archive()</code> an archive from a file or directory</li>
 </ul>
 
 <h2 id="installation">Installation</h2>
@@ -103,7 +109,9 @@ pathlibutil    </h1>
 </blockquote>
 
 <div class="pdoc-code codehilite">
-<pre><span></span><code><span class="n">readme</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;README.md&#39;</span><span class="p">)</span>
+<pre><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">readme</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;README.md&#39;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;File content&#39;</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="s1">&#39;=&#39;</span><span class="p">))</span>
 
@@ -123,7 +131,9 @@ pathlibutil    </h1>
 </blockquote>
 
 <div class="pdoc-code codehilite">
-<pre><span></span><code><span class="n">file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;pathlibutil.md5&#39;</span><span class="p">)</span>
+<pre><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;pathlibutil.md5&#39;</span><span class="p">)</span>
 
 <span class="n">algorithm</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">suffix</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
 
@@ -148,7 +158,9 @@ pathlibutil    </h1>
 </blockquote>
 
 <div class="pdoc-code codehilite">
-<pre><span></span><code><span class="n">file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;pathlibutil.md5&#39;</span><span class="p">)</span>
+<pre><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;pathlibutil.md5&#39;</span><span class="p">)</span>
 
 <span class="n">Path</span><span class="o">.</span><span class="n">default_hash</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">suffix</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
 
@@ -169,6 +181,77 @@ pathlibutil    </h1>
             <span class="n">tag</span> <span class="o">=</span> <span class="s1">&#39;ok&#39;</span> <span class="k">if</span> <span class="n">verification</span> <span class="k">else</span> <span class="s1">&#39;fail</span>
 
       <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">tag</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">digest</span><span class="p">),</span><span class="w"> </span><span class="s2">&quot;.&quot;</span><span class="p">)</span><span class="si">}</span><span class="s1"> *</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<h2 id="example-4">Example 4</h2>
+
+<p>Search all pycache directories and free the memory.</p>
+
+<blockquote>
+  <p><code>Path().delete()</code> and <code>Path().size()</code></p>
+</blockquote>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">mem</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">cache</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s1">&#39;*/__pycache__/&#39;</span><span class="p">),</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+      <span class="n">cache_size</span> <span class="o">=</span> <span class="n">cache</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+      <span class="k">try</span><span class="p">:</span>
+            <span class="n">cache</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+      <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Failed to delete </span><span class="si">{</span><span class="n">cache</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+      <span class="k">else</span><span class="p">:</span>
+            <span class="n">mem</span> <span class="o">+=</span> <span class="n">cache_size</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1"> cache directories deleted, </span><span class="si">{</span><span class="n">mem</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="o">**</span><span class="mi">20</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> MB freed.&#39;</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<h2 id="example-5">Example 5</h2>
+
+<p>Inherit from <code>pathlibutil.Path</code> to register new a archive format.
+Specify a <code>name</code> as keyword argument in the new subclass, which has to be the suffix of the archives.
+Implement a classmethod <code>_register_archive_format()</code> to register new archive formats.</p>
+
+<blockquote>
+  <p><code>Path().make_archive()</code> and <code>Path().move()</code></p>
+</blockquote>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">import</span> <span class="nn">pathlibutil</span>
+
+<span class="k">class</span> <span class="nc">RegisterRarFormat</span><span class="p">(</span><span class="n">pathlibutil</span><span class="o">.</span><span class="n">Path</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;rar&#39;</span><span class="p">):</span>
+      <span class="nd">@classmethod</span>
+      <span class="k">def</span> <span class="nf">_register_archive_format</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+<span class="w">      </span><span class="sd">&quot;&quot;&quot; </span>
+<span class="sd">            implement new register functions for given `name`</span>
+<span class="sd">      &quot;&quot;&quot;</span>
+            <span class="k">try</span><span class="p">:</span>
+                  <span class="kn">from</span> <span class="nn">pyunpack</span> <span class="kn">import</span> <span class="n">Archive</span>
+            <span class="k">except</span> <span class="ne">ModuleNotFoundError</span><span class="p">:</span>
+                  <span class="k">raise</span> <span class="ne">ModuleNotFoundError</span><span class="p">(</span><span class="s1">&#39;pip install pyunpack&#39;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                  <span class="n">shutil</span><span class="o">.</span><span class="n">register_archive_format</span><span class="p">(</span>
+                        <span class="s1">&#39;rar&#39;</span><span class="p">,</span> <span class="n">Archive</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;rar archive&#39;</span>
+                  <span class="p">)</span>
+                  <span class="n">shutil</span><span class="o">.</span><span class="n">register_unpack_format</span><span class="p">(</span>
+                        <span class="s1">&#39;rar&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;.rar&#39;</span><span class="p">],</span> <span class="n">Archive</span>
+                  <span class="p">)</span>
+
+<span class="n">file</span> <span class="o">=</span> <span class="n">pathlibutil</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;README.md&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;available archive formats: </span><span class="si">{</span><span class="n">file</span><span class="o">.</span><span class="n">archive_formats</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">archive</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">make_archive</span><span class="p">(</span><span class="s1">&#39;README.rar&#39;</span><span class="p">)</span>
+
+<span class="n">backup</span> <span class="o">=</span> <span class="n">archive</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="s1">&#39;./backup/&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;rar archive created: </span><span class="si">{</span><span class="n">archive</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1"> and moved to: </span><span class="si">{</span><span class="n">backup</span><span class="o">.</span><span class="n">parent</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </code></pre>
 </div>
 </div>

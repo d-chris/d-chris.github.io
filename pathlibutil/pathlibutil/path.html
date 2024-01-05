@@ -60,6 +60,21 @@
                         <li>
                                 <a class="function" href="#Path.move">move</a>
                         </li>
+                        <li>
+                                <a class="function" href="#Path.make_archive">make_archive</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#Path.unpack_archive">unpack_archive</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Path.archive_formats">archive_formats</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#Register7zFormat">Register7zFormat</a>
+                            <ul class="memberlist">
                 </ul>
 
             </li>
@@ -230,6 +245,49 @@
 
 
                             </div>
+                            <div id="Path.make_archive" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">make_archive</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">archivename</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">) -> <span class="n"><a href="#Path">Path</a></span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#Path.make_archive"></a>
+    
+            <div class="docstring"><p>Creates an archive file (eg. zip) and returns the path to the archive.</p>
+</div>
+
+
+                            </div>
+                            <div id="Path.unpack_archive" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">unpack_archive</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">extract_dir</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">) -> <span class="n"><a href="#Path">Path</a></span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#Path.unpack_archive"></a>
+    
+            <div class="docstring"><p>Unpacks an archive file (eg. zip) and returns the path to the extracted files.</p>
+</div>
+
+
+                            </div>
+                            <div id="Path.archive_formats" class="classattr">
+                                <div class="attr variable">
+            <span class="name">archive_formats</span><span class="annotation">: List[str]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Path.archive_formats"></a>
+    
+            <div class="docstring"><p>Returns a list of supported archive formats.</p>
+</div>
+
+
+                            </div>
                             <div class="inherited">
                                 <h5>Inherited Members</h5>
                                 <dl>
@@ -297,6 +355,130 @@
                 <dd id="Path.is_absolute" class="function">is_absolute</dd>
                 <dd id="Path.is_reserved" class="function">is_reserved</dd>
                 <dd id="Path.match" class="function">match</dd>
+
+            </div>
+                                </dl>
+                            </div>
+                </section>
+                <section id="Register7zFormat">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">Register7zFormat</span><wbr>(<span class="base"><a href="#Path">Path</a></span>):
+
+        
+    </div>
+    <a class="headerlink" href="#Register7zFormat"></a>
+    
+            <div class="docstring"><p>Register 7z archive format using <code>__init_subclass__</code> hook.</p>
+
+<p>To register a new archive format create a subclass of <code><a href="#Path">Path</a></code> and implement a <code>_register_archive_format()</code> method.</p>
+
+<p>Example:</p>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="k">class</span> <span class="nc">Register7zArchive</span><span class="p">(</span><span class="n">Path</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;7z&#39;</span><span class="p">):</span>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">_register_archive_format</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">py7zr</span> <span class="kn">import</span> <span class="n">pack_7zarchive</span><span class="p">,</span> <span class="n">unpack_7zarchive</span>
+        <span class="k">except</span> <span class="ne">ModuleNotFoundError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ModuleNotFoundError</span><span class="p">(</span><span class="s1">&#39;pip install pathlibutil[7z]&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">shutil</span><span class="o">.</span><span class="n">register_archive_format</span><span class="p">(</span>
+                <span class="s1">&#39;7z&#39;</span><span class="p">,</span> <span class="n">pack_7zarchive</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;7zip archive&#39;</span>
+            <span class="p">)</span>
+            <span class="n">shutil</span><span class="o">.</span><span class="n">register_unpack_format</span><span class="p">(</span>
+                <span class="s1">&#39;7z&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;.7z&#39;</span><span class="p">],</span> <span class="n">unpack_7zarchive</span>
+            <span class="p">)</span>
+</code></pre>
+</div>
+</div>
+
+
+                            <div class="inherited">
+                                <h5>Inherited Members</h5>
+                                <dl>
+                                    <div><dt><a href="#Path">Path</a></dt>
+                                <dd id="Register7zFormat.default_hash" class="variable"><a href="#Path.default_hash">default_hash</a></dd>
+                <dd id="Register7zFormat.algorithms_available" class="variable"><a href="#Path.algorithms_available">algorithms_available</a></dd>
+                <dd id="Register7zFormat.hexdigest" class="function"><a href="#Path.hexdigest">hexdigest</a></dd>
+                <dd id="Register7zFormat.verify" class="function"><a href="#Path.verify">verify</a></dd>
+                <dd id="Register7zFormat.read_lines" class="function"><a href="#Path.read_lines">read_lines</a></dd>
+                <dd id="Register7zFormat.size" class="function"><a href="#Path.size">size</a></dd>
+                <dd id="Register7zFormat.copy" class="function"><a href="#Path.copy">copy</a></dd>
+                <dd id="Register7zFormat.delete" class="function"><a href="#Path.delete">delete</a></dd>
+                <dd id="Register7zFormat.move" class="function"><a href="#Path.move">move</a></dd>
+                <dd id="Register7zFormat.make_archive" class="function"><a href="#Path.make_archive">make_archive</a></dd>
+                <dd id="Register7zFormat.unpack_archive" class="function"><a href="#Path.unpack_archive">unpack_archive</a></dd>
+                <dd id="Register7zFormat.archive_formats" class="variable"><a href="#Path.archive_formats">archive_formats</a></dd>
+
+            </div>
+            <div><dt>pathlib.Path</dt>
+                                <dd id="Register7zFormat.cwd" class="function">cwd</dd>
+                <dd id="Register7zFormat.home" class="function">home</dd>
+                <dd id="Register7zFormat.samefile" class="function">samefile</dd>
+                <dd id="Register7zFormat.iterdir" class="function">iterdir</dd>
+                <dd id="Register7zFormat.glob" class="function">glob</dd>
+                <dd id="Register7zFormat.rglob" class="function">rglob</dd>
+                <dd id="Register7zFormat.absolute" class="function">absolute</dd>
+                <dd id="Register7zFormat.resolve" class="function">resolve</dd>
+                <dd id="Register7zFormat.stat" class="function">stat</dd>
+                <dd id="Register7zFormat.owner" class="function">owner</dd>
+                <dd id="Register7zFormat.group" class="function">group</dd>
+                <dd id="Register7zFormat.open" class="function">open</dd>
+                <dd id="Register7zFormat.read_bytes" class="function">read_bytes</dd>
+                <dd id="Register7zFormat.read_text" class="function">read_text</dd>
+                <dd id="Register7zFormat.write_bytes" class="function">write_bytes</dd>
+                <dd id="Register7zFormat.write_text" class="function">write_text</dd>
+                <dd id="Register7zFormat.readlink" class="function">readlink</dd>
+                <dd id="Register7zFormat.touch" class="function">touch</dd>
+                <dd id="Register7zFormat.mkdir" class="function">mkdir</dd>
+                <dd id="Register7zFormat.chmod" class="function">chmod</dd>
+                <dd id="Register7zFormat.lchmod" class="function">lchmod</dd>
+                <dd id="Register7zFormat.unlink" class="function">unlink</dd>
+                <dd id="Register7zFormat.rmdir" class="function">rmdir</dd>
+                <dd id="Register7zFormat.lstat" class="function">lstat</dd>
+                <dd id="Register7zFormat.rename" class="function">rename</dd>
+                <dd id="Register7zFormat.replace" class="function">replace</dd>
+                <dd id="Register7zFormat.symlink_to" class="function">symlink_to</dd>
+                <dd id="Register7zFormat.hardlink_to" class="function">hardlink_to</dd>
+                <dd id="Register7zFormat.link_to" class="function">link_to</dd>
+                <dd id="Register7zFormat.exists" class="function">exists</dd>
+                <dd id="Register7zFormat.is_dir" class="function">is_dir</dd>
+                <dd id="Register7zFormat.is_file" class="function">is_file</dd>
+                <dd id="Register7zFormat.is_mount" class="function">is_mount</dd>
+                <dd id="Register7zFormat.is_symlink" class="function">is_symlink</dd>
+                <dd id="Register7zFormat.is_block_device" class="function">is_block_device</dd>
+                <dd id="Register7zFormat.is_char_device" class="function">is_char_device</dd>
+                <dd id="Register7zFormat.is_fifo" class="function">is_fifo</dd>
+                <dd id="Register7zFormat.is_socket" class="function">is_socket</dd>
+                <dd id="Register7zFormat.expanduser" class="function">expanduser</dd>
+
+            </div>
+            <div><dt>pathlib.PurePath</dt>
+                                <dd id="Register7zFormat.as_posix" class="function">as_posix</dd>
+                <dd id="Register7zFormat.as_uri" class="function">as_uri</dd>
+                <dd id="Register7zFormat.drive" class="variable">drive</dd>
+                <dd id="Register7zFormat.root" class="variable">root</dd>
+                <dd id="Register7zFormat.anchor" class="variable">anchor</dd>
+                <dd id="Register7zFormat.name" class="variable">name</dd>
+                <dd id="Register7zFormat.suffix" class="variable">suffix</dd>
+                <dd id="Register7zFormat.suffixes" class="variable">suffixes</dd>
+                <dd id="Register7zFormat.stem" class="variable">stem</dd>
+                <dd id="Register7zFormat.with_name" class="function">with_name</dd>
+                <dd id="Register7zFormat.with_stem" class="function">with_stem</dd>
+                <dd id="Register7zFormat.with_suffix" class="function">with_suffix</dd>
+                <dd id="Register7zFormat.relative_to" class="function">relative_to</dd>
+                <dd id="Register7zFormat.is_relative_to" class="function">is_relative_to</dd>
+                <dd id="Register7zFormat.parts" class="variable">parts</dd>
+                <dd id="Register7zFormat.joinpath" class="function">joinpath</dd>
+                <dd id="Register7zFormat.parent" class="variable">parent</dd>
+                <dd id="Register7zFormat.parents" class="variable">parents</dd>
+                <dd id="Register7zFormat.is_absolute" class="function">is_absolute</dd>
+                <dd id="Register7zFormat.is_reserved" class="function">is_reserved</dd>
+                <dd id="Register7zFormat.match" class="function">match</dd>
 
             </div>
                                 </dl>
