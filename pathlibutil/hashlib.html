@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="pdoc 14.3.0"/>
-    <title>pathlibutil.path API documentation</title>
+    <title>hashlib API documentation</title>
 
     <style>/*! * Bootstrap Reboot v5.0.0 (https://getbootstrap.com/) * Copyright 2011-2021 The Bootstrap Authors * Copyright 2011-2021 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE) * Forked from Normalize.css, licensed MIT (https://github.com/necolas/normalize.css/blob/master/LICENSE.md) */*,::after,::before{box-sizing:border-box}@media (prefers-reduced-motion:no-preference){:root{scroll-behavior:smooth}}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";font-size:1rem;font-weight:400;line-height:1.5;color:#212529;background-color:#fff;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}hr{margin:1rem 0;color:inherit;background-color:currentColor;border:0;opacity:.25}hr:not([size]){height:1px}h1,h2,h3,h4,h5,h6{margin-top:0;margin-bottom:.5rem;font-weight:500;line-height:1.2}h1{font-size:calc(1.375rem + 1.5vw)}@media (min-width:1200px){h1{font-size:2.5rem}}h2{font-size:calc(1.325rem + .9vw)}@media (min-width:1200px){h2{font-size:2rem}}h3{font-size:calc(1.3rem + .6vw)}@media (min-width:1200px){h3{font-size:1.75rem}}h4{font-size:calc(1.275rem + .3vw)}@media (min-width:1200px){h4{font-size:1.5rem}}h5{font-size:1.25rem}h6{font-size:1rem}p{margin-top:0;margin-bottom:1rem}abbr[data-bs-original-title],abbr[title]{-webkit-text-decoration:underline dotted;text-decoration:underline dotted;cursor:help;-webkit-text-decoration-skip-ink:none;text-decoration-skip-ink:none}address{margin-bottom:1rem;font-style:normal;line-height:inherit}ol,ul{padding-left:2rem}dl,ol,ul{margin-top:0;margin-bottom:1rem}ol ol,ol ul,ul ol,ul ul{margin-bottom:0}dt{font-weight:700}dd{margin-bottom:.5rem;margin-left:0}blockquote{margin:0 0 1rem}b,strong{font-weight:bolder}small{font-size:.875em}mark{padding:.2em;background-color:#fcf8e3}sub,sup{position:relative;font-size:.75em;line-height:0;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}a{color:#0d6efd;text-decoration:underline}a:hover{color:#0a58ca}a:not([href]):not([class]),a:not([href]):not([class]):hover{color:inherit;text-decoration:none}code,kbd,pre,samp{font-family:SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;font-size:1em;direction:ltr;unicode-bidi:bidi-override}pre{display:block;margin-top:0;margin-bottom:1rem;overflow:auto;font-size:.875em}pre code{font-size:inherit;color:inherit;word-break:normal}code{font-size:.875em;color:#d63384;word-wrap:break-word}a>code{color:inherit}kbd{padding:.2rem .4rem;font-size:.875em;color:#fff;background-color:#212529;border-radius:.2rem}kbd kbd{padding:0;font-size:1em;font-weight:700}figure{margin:0 0 1rem}img,svg{vertical-align:middle}table{caption-side:bottom;border-collapse:collapse}caption{padding-top:.5rem;padding-bottom:.5rem;color:#6c757d;text-align:left}th{text-align:inherit;text-align:-webkit-match-parent}tbody,td,tfoot,th,thead,tr{border-color:inherit;border-style:solid;border-width:0}label{display:inline-block}button{border-radius:0}button:focus:not(:focus-visible){outline:0}button,input,optgroup,select,textarea{margin:0;font-family:inherit;font-size:inherit;line-height:inherit}button,select{text-transform:none}[role=button]{cursor:pointer}select{word-wrap:normal}select:disabled{opacity:1}[list]::-webkit-calendar-picker-indicator{display:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]:not(:disabled),[type=reset]:not(:disabled),[type=submit]:not(:disabled),button:not(:disabled){cursor:pointer}::-moz-focus-inner{padding:0;border-style:none}textarea{resize:vertical}fieldset{min-width:0;padding:0;margin:0;border:0}legend{float:left;width:100%;padding:0;margin-bottom:.5rem;font-size:calc(1.275rem + .3vw);line-height:inherit}@media (min-width:1200px){legend{font-size:1.5rem}}legend+*{clear:left}::-webkit-datetime-edit-day-field,::-webkit-datetime-edit-fields-wrapper,::-webkit-datetime-edit-hour-field,::-webkit-datetime-edit-minute,::-webkit-datetime-edit-month-field,::-webkit-datetime-edit-text,::-webkit-datetime-edit-year-field{padding:0}::-webkit-inner-spin-button{height:auto}[type=search]{outline-offset:-2px;-webkit-appearance:textfield}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-color-swatch-wrapper{padding:0}::file-selector-button{font:inherit}::-webkit-file-upload-button{font:inherit;-webkit-appearance:button}output{display:inline-block}iframe{border:0}summary{display:list-item;cursor:pointer}progress{vertical-align:baseline}[hidden]{display:none!important}</style>
     <style>/*! syntax-highlighting.css */pre{line-height:125%;}span.linenos{color:inherit; background-color:transparent; padding-left:5px; padding-right:20px;}.pdoc-code .hll{background-color:#49483e}.pdoc-code{background:#272822; color:#f8f8f2}.pdoc-code .c{color:#75715e}.pdoc-code .err{color:#960050; background-color:#1e0010}.pdoc-code .esc{color:#f8f8f2}.pdoc-code .g{color:#f8f8f2}.pdoc-code .k{color:#66d9ef}.pdoc-code .l{color:#ae81ff}.pdoc-code .n{color:#f8f8f2}.pdoc-code .o{color:#f92672}.pdoc-code .x{color:#f8f8f2}.pdoc-code .p{color:#f8f8f2}.pdoc-code .ch{color:#75715e}.pdoc-code .cm{color:#75715e}.pdoc-code .cp{color:#75715e}.pdoc-code .cpf{color:#75715e}.pdoc-code .c1{color:#75715e}.pdoc-code .cs{color:#75715e}.pdoc-code .gd{color:#f92672}.pdoc-code .ge{color:#f8f8f2; font-style:italic}.pdoc-code .gr{color:#f8f8f2}.pdoc-code .gh{color:#f8f8f2}.pdoc-code .gi{color:#a6e22e}.pdoc-code .go{color:#66d9ef}.pdoc-code .gp{color:#f92672; font-weight:bold}.pdoc-code .gs{color:#f8f8f2; font-weight:bold}.pdoc-code .gu{color:#75715e}.pdoc-code .gt{color:#f8f8f2}.pdoc-code .kc{color:#66d9ef}.pdoc-code .kd{color:#66d9ef}.pdoc-code .kn{color:#f92672}.pdoc-code .kp{color:#66d9ef}.pdoc-code .kr{color:#66d9ef}.pdoc-code .kt{color:#66d9ef}.pdoc-code .ld{color:#e6db74}.pdoc-code .m{color:#ae81ff}.pdoc-code .s{color:#e6db74}.pdoc-code .na{color:#a6e22e}.pdoc-code .nb{color:#f8f8f2}.pdoc-code .nc{color:#a6e22e}.pdoc-code .no{color:#66d9ef}.pdoc-code .nd{color:#a6e22e}.pdoc-code .ni{color:#f8f8f2}.pdoc-code .ne{color:#a6e22e}.pdoc-code .nf{color:#a6e22e}.pdoc-code .nl{color:#f8f8f2}.pdoc-code .nn{color:#f8f8f2}.pdoc-code .nx{color:#a6e22e}.pdoc-code .py{color:#f8f8f2}.pdoc-code .nt{color:#f92672}.pdoc-code .nv{color:#f8f8f2}.pdoc-code .ow{color:#f92672}.pdoc-code .w{color:#f8f8f2}.pdoc-code .mb{color:#ae81ff}.pdoc-code .mf{color:#ae81ff}.pdoc-code .mh{color:#ae81ff}.pdoc-code .mi{color:#ae81ff}.pdoc-code .mo{color:#ae81ff}.pdoc-code .sa{color:#e6db74}.pdoc-code .sb{color:#e6db74}.pdoc-code .sc{color:#e6db74}.pdoc-code .dl{color:#e6db74}.pdoc-code .sd{color:#e6db74}.pdoc-code .s2{color:#e6db74}.pdoc-code .se{color:#ae81ff}.pdoc-code .sh{color:#e6db74}.pdoc-code .si{color:#e6db74}.pdoc-code .sx{color:#e6db74}.pdoc-code .sr{color:#e6db74}.pdoc-code .s1{color:#e6db74}.pdoc-code .ss{color:#e6db74}.pdoc-code .bp{color:#f8f8f2}.pdoc-code .fm{color:#a6e22e}.pdoc-code .vc{color:#f8f8f2}.pdoc-code .vg{color:#f8f8f2}.pdoc-code .vi{color:#f8f8f2}.pdoc-code .vm{color:#f8f8f2}</style>
@@ -16,11 +16,7 @@
     <nav class="pdoc">
         <label id="navtoggle" for="togglestate" class="pdoc-button"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke-linecap='round' stroke="currentColor" stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg></label>
         <input id="togglestate" type="checkbox" aria-hidden="true" tabindex="-1">
-        <div>            <a class="pdoc-button module-list-button" href="../pathlibutil.html">
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0v-2z"/>
-  <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
-</svg>                &nbsp;pathlibutil</a>
+        <div><!-- Remove pdoc-button -->
 
 
             <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
@@ -31,52 +27,133 @@
             <h2>API Documentation</h2>
                 <ul class="memberlist">
             <li>
-                    <a class="class" href="#Path">Path</a>
+                    <a class="function" href="#md5">md5</a>
+            </li>
+            <li>
+                    <a class="function" href="#sha1">sha1</a>
+            </li>
+            <li>
+                    <a class="function" href="#sha224">sha224</a>
+            </li>
+            <li>
+                    <a class="function" href="#sha256">sha256</a>
+            </li>
+            <li>
+                    <a class="function" href="#sha384">sha384</a>
+            </li>
+            <li>
+                    <a class="function" href="#sha512">sha512</a>
+            </li>
+            <li>
+                    <a class="class" href="#blake2b">blake2b</a>
                             <ul class="memberlist">
                         <li>
-                                <a class="variable" href="#Path.default_hash">default_hash</a>
+                                <a class="function" href="#blake2b.copy">copy</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Path.algorithms_available">algorithms_available</a>
+                                <a class="function" href="#blake2b.digest">digest</a>
                         </li>
                         <li>
-                                <a class="function" href="#Path.hexdigest">hexdigest</a>
+                                <a class="function" href="#blake2b.hexdigest">hexdigest</a>
                         </li>
                         <li>
-                                <a class="function" href="#Path.verify">verify</a>
+                                <a class="function" href="#blake2b.update">update</a>
                         </li>
                         <li>
-                                <a class="function" href="#Path.read_lines">read_lines</a>
+                                <a class="variable" href="#blake2b.name">name</a>
                         </li>
                         <li>
-                                <a class="function" href="#Path.size">size</a>
+                                <a class="variable" href="#blake2b.block_size">block_size</a>
                         </li>
                         <li>
-                                <a class="function" href="#Path.copy">copy</a>
+                                <a class="variable" href="#blake2b.digest_size">digest_size</a>
                         </li>
                         <li>
-                                <a class="function" href="#Path.delete">delete</a>
+                                <a class="variable" href="#blake2b.SALT_SIZE">SALT_SIZE</a>
                         </li>
                         <li>
-                                <a class="function" href="#Path.move">move</a>
+                                <a class="variable" href="#blake2b.PERSON_SIZE">PERSON_SIZE</a>
                         </li>
                         <li>
-                                <a class="function" href="#Path.make_archive">make_archive</a>
+                                <a class="variable" href="#blake2b.MAX_KEY_SIZE">MAX_KEY_SIZE</a>
                         </li>
                         <li>
-                                <a class="function" href="#Path.unpack_archive">unpack_archive</a>
-                        </li>
-                        <li>
-                                <a class="variable" href="#Path.archive_formats">archive_formats</a>
+                                <a class="variable" href="#blake2b.MAX_DIGEST_SIZE">MAX_DIGEST_SIZE</a>
                         </li>
                 </ul>
 
             </li>
             <li>
-                    <a class="class" href="#Register7zFormat">Register7zFormat</a>
+                    <a class="class" href="#blake2s">blake2s</a>
                             <ul class="memberlist">
+                        <li>
+                                <a class="function" href="#blake2s.copy">copy</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#blake2s.digest">digest</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#blake2s.hexdigest">hexdigest</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#blake2s.update">update</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#blake2s.name">name</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#blake2s.block_size">block_size</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#blake2s.digest_size">digest_size</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#blake2s.SALT_SIZE">SALT_SIZE</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#blake2s.PERSON_SIZE">PERSON_SIZE</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#blake2s.MAX_KEY_SIZE">MAX_KEY_SIZE</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#blake2s.MAX_DIGEST_SIZE">MAX_DIGEST_SIZE</a>
+                        </li>
                 </ul>
 
+            </li>
+            <li>
+                    <a class="function" href="#sha3_224">sha3_224</a>
+            </li>
+            <li>
+                    <a class="function" href="#sha3_256">sha3_256</a>
+            </li>
+            <li>
+                    <a class="function" href="#sha3_384">sha3_384</a>
+            </li>
+            <li>
+                    <a class="function" href="#sha3_512">sha3_512</a>
+            </li>
+            <li>
+                    <a class="function" href="#shake_128">shake_128</a>
+            </li>
+            <li>
+                    <a class="function" href="#shake_256">shake_256</a>
+            </li>
+            <li>
+                    <a class="function" href="#new">new</a>
+            </li>
+            <li>
+                    <a class="variable" href="#algorithms_guaranteed">algorithms_guaranteed</a>
+            </li>
+            <li>
+                    <a class="variable" href="#algorithms_available">algorithms_available</a>
+            </li>
+            <li>
+                    <a class="function" href="#pbkdf2_hmac">pbkdf2_hmac</a>
+            </li>
+            <li>
+                    <a class="function" href="#file_digest">file_digest</a>
             </li>
     </ul>
 
@@ -92,397 +169,638 @@
     <main class="pdoc">
             <section class="module-info">
                     <h1 class="modulename">
-<a href="./../pathlibutil.html">pathlibutil</a><wbr>.path    </h1>
+hashlib    </h1>
 
-                
+                        <div class="docstring"><p>hashlib module - A common interface to many hash functions.</p>
+
+<p>new(name, data=b'', **kwargs) - returns a new hash object implementing the
+                                given hash function; initializing the hash
+                                using the given binary data.</p>
+
+<p>Named constructor functions are also available, these are faster
+than using new(name):</p>
+
+<p>md5(), sha1(), sha224(), sha256(), sha384(), sha512(), blake2b(), blake2s(),
+sha3_224, sha3_256, sha3_384, sha3_512, shake_128, and shake_256.</p>
+
+<p>More algorithms may be available on your platform but the above are guaranteed
+to exist.  See the algorithms_guaranteed and algorithms_available attributes
+to find out what algorithm names can be passed to new().</p>
+
+<p>NOTE: If you want the adler32 or crc32 hash functions they are available in
+the zlib module.</p>
+
+<p>Choose your hash function wisely.  Some have known collision weaknesses.
+sha384 and sha512 will be slow on 32 bit platforms.</p>
+
+<p>Hash objects have these methods:</p>
+
+<ul>
+<li>update(data): Update the hash object with the bytes in data. Repeated calls
+are equivalent to a single call with the concatenation of all
+the arguments.</li>
+<li>digest():     Return the digest of the bytes passed to the update() method
+so far as a bytes object.</li>
+<li>hexdigest():  Like digest() except the digest is returned as a string
+of double length, containing only hexadecimal digits.</li>
+<li>copy():       Return a copy (clone) of the hash object. This can be used to
+efficiently compute the digests of datas that share a common
+initial substring.</li>
+</ul>
+
+<p>For example, to obtain the digest of the byte string 'Nobody inspects the
+spammish repetition':</p>
+
+<pre><code>&gt;&gt;&gt; import hashlib
+&gt;&gt;&gt; m = <a href="#md5">hashlib.md5()</a>
+&gt;&gt;&gt; m.update(b"Nobody inspects")
+&gt;&gt;&gt; m.update(b" the spammish repetition")
+&gt;&gt;&gt; m.digest()
+b'\xbbd\x9c\x83\xdd\x1e\xa5\xc9\xd9\xde\xc9\xa1\x8d\xf0\xff\xe9'
+</code></pre>
+
+<p>More condensed:</p>
+
+<pre><code>&gt;&gt;&gt; <a href="#sha224">hashlib.sha224</a>(b"Nobody inspects the spammish repetition").hexdigest()
+'a4337bc45a8fc544c03f52dc550cd6e1e87021bc896588bd79e901e2'
+</code></pre>
+</div>
+
                 
                 
                 
             </section>
-                <section id="Path">
+                <section id="md5">
+                    <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">md5</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">string</span><span class="o">=</span><span class="sa">b</span><span class="s1">&#39;&#39;</span>, </span><span class="param"><span class="o">*</span>, </span><span class="param"><span class="n">usedforsecurity</span><span class="o">=</span><span class="kc">True</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#md5"></a>
+    
+            <div class="docstring"><p>Returns a md5 hash object; optionally initialized with a string</p>
+</div>
+
+
+                </section>
+                <section id="sha1">
+                    <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">sha1</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">string</span><span class="o">=</span><span class="sa">b</span><span class="s1">&#39;&#39;</span>, </span><span class="param"><span class="o">*</span>, </span><span class="param"><span class="n">usedforsecurity</span><span class="o">=</span><span class="kc">True</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#sha1"></a>
+    
+            <div class="docstring"><p>Returns a sha1 hash object; optionally initialized with a string</p>
+</div>
+
+
+                </section>
+                <section id="sha224">
+                    <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">sha224</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">string</span><span class="o">=</span><span class="sa">b</span><span class="s1">&#39;&#39;</span>, </span><span class="param"><span class="o">*</span>, </span><span class="param"><span class="n">usedforsecurity</span><span class="o">=</span><span class="kc">True</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#sha224"></a>
+    
+            <div class="docstring"><p>Returns a sha224 hash object; optionally initialized with a string</p>
+</div>
+
+
+                </section>
+                <section id="sha256">
+                    <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">sha256</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">string</span><span class="o">=</span><span class="sa">b</span><span class="s1">&#39;&#39;</span>, </span><span class="param"><span class="o">*</span>, </span><span class="param"><span class="n">usedforsecurity</span><span class="o">=</span><span class="kc">True</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#sha256"></a>
+    
+            <div class="docstring"><p>Returns a sha256 hash object; optionally initialized with a string</p>
+</div>
+
+
+                </section>
+                <section id="sha384">
+                    <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">sha384</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">string</span><span class="o">=</span><span class="sa">b</span><span class="s1">&#39;&#39;</span>, </span><span class="param"><span class="o">*</span>, </span><span class="param"><span class="n">usedforsecurity</span><span class="o">=</span><span class="kc">True</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#sha384"></a>
+    
+            <div class="docstring"><p>Returns a sha384 hash object; optionally initialized with a string</p>
+</div>
+
+
+                </section>
+                <section id="sha512">
+                    <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">sha512</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">string</span><span class="o">=</span><span class="sa">b</span><span class="s1">&#39;&#39;</span>, </span><span class="param"><span class="o">*</span>, </span><span class="param"><span class="n">usedforsecurity</span><span class="o">=</span><span class="kc">True</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#sha512"></a>
+    
+            <div class="docstring"><p>Returns a sha512 hash object; optionally initialized with a string</p>
+</div>
+
+
+                </section>
+                <section id="blake2b">
                     <div class="attr class">
             
     <span class="def">class</span>
-    <span class="name">Path</span><wbr>(<span class="base"><a href="../pathlib.html#Path">pathlib.Path</a></span>):
+    <span class="name">blake2b</span>:
 
         
     </div>
-    <a class="headerlink" href="#Path"></a>
+    <a class="headerlink" href="#blake2b"></a>
     
-            <div class="docstring"><p>Path inherites from <code><a href="../pathlib.html#Path">pathlib.Path</a></code> and adds some methods to built-in python functions</p>
+            <div class="docstring"><p>Return a new BLAKE2b hash object.</p>
 </div>
 
 
-                            <div id="Path.default_hash" class="classattr">
+                            <div id="blake2b.copy" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">copy</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#blake2b.copy"></a>
+    
+            <div class="docstring"><p>Return a copy of the hash object.</p>
+</div>
+
+
+                            </div>
+                            <div id="blake2b.digest" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">digest</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#blake2b.digest"></a>
+    
+            <div class="docstring"><p>Return the digest value as a bytes object.</p>
+</div>
+
+
+                            </div>
+                            <div id="blake2b.hexdigest" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">hexdigest</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#blake2b.hexdigest"></a>
+    
+            <div class="docstring"><p>Return the digest value as a string of hexadecimal digits.</p>
+</div>
+
+
+                            </div>
+                            <div id="blake2b.update" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">update</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">data</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#blake2b.update"></a>
+    
+            <div class="docstring"><p>Update this hash object's state with the provided bytes-like object.</p>
+</div>
+
+
+                            </div>
+                            <div id="blake2b.name" class="classattr">
                                 <div class="attr variable">
-            <span class="name">default_hash</span>        =
-<span class="default_value">&#39;md5&#39;</span>
+            <span class="name">name</span>
 
         
     </div>
-    <a class="headerlink" href="#Path.default_hash"></a>
+    <a class="headerlink" href="#blake2b.name"></a>
     
-            <div class="docstring"><p>default hash algorithm for the class when no algorithm is specified for <code><a href="#Path.hexdigest">hexdigest()</a></code> and <code><a href="#Path.verify">verify()</a></code></p>
-</div>
-
+    
 
                             </div>
-                            <div id="Path.algorithms_available" class="classattr">
+                            <div id="blake2b.block_size" class="classattr">
                                 <div class="attr variable">
-            <span class="name">algorithms_available</span><span class="annotation">: Set[str]</span>
+            <span class="name">block_size</span>
 
         
     </div>
-    <a class="headerlink" href="#Path.algorithms_available"></a>
+    <a class="headerlink" href="#blake2b.block_size"></a>
     
-            <div class="docstring"><p>Set of available algorithms that can be passed to <code><a href="#Path.hexdigest">hexdigest()</a></code> and <code><a href="#Path.verify">verify()</a></code> method.</p>
-</div>
-
+    
 
                             </div>
-                            <div id="Path.hexdigest" class="classattr">
-                                <div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">hexdigest</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">algorithm</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">) -> <span class="nb">str</span>:</span></span>
-
-        
-    </div>
-    <a class="headerlink" href="#Path.hexdigest"></a>
-    
-            <div class="docstring"><p>Returns the hexdigest of the file using the named algorithm (default: <code><a href="#Path.default_hash">default_hash</a></code>).</p>
-</div>
-
-
-                            </div>
-                            <div id="Path.verify" class="classattr">
-                                <div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">verify</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="bp">self</span>,</span><span class="param">	<span class="n">hexdigest</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">algorithm</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="o">*</span>,</span><span class="param">	<span class="n">strict</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>,</span><span class="param">	<span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">) -> <span class="nb">bool</span>:</span></span>
-
-        
-    </div>
-    <a class="headerlink" href="#Path.verify"></a>
-    
-            <div class="docstring"><p>Verifies the hash of the file using the named algorithm (default: <code><a href="#Path.default_hash">default_hash</a></code>).</p>
-</div>
-
-
-                            </div>
-                            <div id="Path.read_lines" class="classattr">
-                                <div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">read_lines</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">) -> <span class="n">Generator</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span>:</span></span>
-
-        
-    </div>
-    <a class="headerlink" href="#Path.read_lines"></a>
-    
-            <div class="docstring"><p>Iterates over all lines of the file until EOF is reached.</p>
-</div>
-
-
-                            </div>
-                            <div id="Path.size" class="classattr">
-                                <div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">size</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">) -> <span class="nb">int</span>:</span></span>
-
-        
-    </div>
-    <a class="headerlink" href="#Path.size"></a>
-    
-            <div class="docstring"><p>Returns the size in bytes of a file or directory.</p>
-</div>
-
-
-                            </div>
-                            <div id="Path.copy" class="classattr">
-                                <div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">copy</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">dst</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="n">exist_ok</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>, </span><span class="param"><span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">) -> <span class="n"><a href="#Path">Path</a></span>:</span></span>
-
-        
-    </div>
-    <a class="headerlink" href="#Path.copy"></a>
-    
-            <div class="docstring"><p>Copies the file or directory to a destination path.</p>
-</div>
-
-
-                            </div>
-                            <div id="Path.delete" class="classattr">
-                                <div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">delete</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="bp">self</span>,</span><span class="param">	<span class="o">*</span>,</span><span class="param">	<span class="n">recursive</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">missing_ok</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">) -> <span class="kc">None</span>:</span></span>
-
-        
-    </div>
-    <a class="headerlink" href="#Path.delete"></a>
-    
-            <div class="docstring"><p>Deletes the file or directory.</p>
-</div>
-
-
-                            </div>
-                            <div id="Path.move" class="classattr">
-                                <div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">move</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">dst</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#Path">Path</a></span>:</span></span>
-
-        
-    </div>
-    <a class="headerlink" href="#Path.move"></a>
-    
-            <div class="docstring"><p>Moves the file or directory to a destination path.</p>
-</div>
-
-
-                            </div>
-                            <div id="Path.make_archive" class="classattr">
-                                <div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">make_archive</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">archivename</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">) -> <span class="n"><a href="#Path">Path</a></span>:</span></span>
-
-        
-    </div>
-    <a class="headerlink" href="#Path.make_archive"></a>
-    
-            <div class="docstring"><p>Creates an archive file (eg. zip) and returns the path to the archive.</p>
-</div>
-
-
-                            </div>
-                            <div id="Path.unpack_archive" class="classattr">
-                                <div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">unpack_archive</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">extract_dir</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">) -> <span class="n"><a href="#Path">Path</a></span>:</span></span>
-
-        
-    </div>
-    <a class="headerlink" href="#Path.unpack_archive"></a>
-    
-            <div class="docstring"><p>Unpacks an archive file (eg. zip) and returns the path to the extracted files.</p>
-</div>
-
-
-                            </div>
-                            <div id="Path.archive_formats" class="classattr">
+                            <div id="blake2b.digest_size" class="classattr">
                                 <div class="attr variable">
-            <span class="name">archive_formats</span><span class="annotation">: List[str]</span>
+            <span class="name">digest_size</span>
 
         
     </div>
-    <a class="headerlink" href="#Path.archive_formats"></a>
+    <a class="headerlink" href="#blake2b.digest_size"></a>
     
-            <div class="docstring"><p>Returns a list of supported archive formats.</p>
-</div>
-
+    
 
                             </div>
-                            <div class="inherited">
-                                <h5>Inherited Members</h5>
-                                <dl>
-                                    <div><dt><a href="../pathlib.html#Path">pathlib.Path</a></dt>
-                                <dd id="Path.cwd" class="function"><a href="../pathlib.html#Path.cwd">cwd</a></dd>
-                <dd id="Path.home" class="function"><a href="../pathlib.html#Path.home">home</a></dd>
-                <dd id="Path.samefile" class="function"><a href="../pathlib.html#Path.samefile">samefile</a></dd>
-                <dd id="Path.iterdir" class="function"><a href="../pathlib.html#Path.iterdir">iterdir</a></dd>
-                <dd id="Path.glob" class="function"><a href="../pathlib.html#Path.glob">glob</a></dd>
-                <dd id="Path.rglob" class="function"><a href="../pathlib.html#Path.rglob">rglob</a></dd>
-                <dd id="Path.absolute" class="function"><a href="../pathlib.html#Path.absolute">absolute</a></dd>
-                <dd id="Path.resolve" class="function"><a href="../pathlib.html#Path.resolve">resolve</a></dd>
-                <dd id="Path.stat" class="function"><a href="../pathlib.html#Path.stat">stat</a></dd>
-                <dd id="Path.owner" class="function"><a href="../pathlib.html#Path.owner">owner</a></dd>
-                <dd id="Path.group" class="function"><a href="../pathlib.html#Path.group">group</a></dd>
-                <dd id="Path.open" class="function"><a href="../pathlib.html#Path.open">open</a></dd>
-                <dd id="Path.read_bytes" class="function"><a href="../pathlib.html#Path.read_bytes">read_bytes</a></dd>
-                <dd id="Path.read_text" class="function"><a href="../pathlib.html#Path.read_text">read_text</a></dd>
-                <dd id="Path.write_bytes" class="function"><a href="../pathlib.html#Path.write_bytes">write_bytes</a></dd>
-                <dd id="Path.write_text" class="function"><a href="../pathlib.html#Path.write_text">write_text</a></dd>
-                <dd id="Path.readlink" class="function"><a href="../pathlib.html#Path.readlink">readlink</a></dd>
-                <dd id="Path.touch" class="function"><a href="../pathlib.html#Path.touch">touch</a></dd>
-                <dd id="Path.mkdir" class="function"><a href="../pathlib.html#Path.mkdir">mkdir</a></dd>
-                <dd id="Path.chmod" class="function"><a href="../pathlib.html#Path.chmod">chmod</a></dd>
-                <dd id="Path.lchmod" class="function"><a href="../pathlib.html#Path.lchmod">lchmod</a></dd>
-                <dd id="Path.unlink" class="function"><a href="../pathlib.html#Path.unlink">unlink</a></dd>
-                <dd id="Path.rmdir" class="function"><a href="../pathlib.html#Path.rmdir">rmdir</a></dd>
-                <dd id="Path.lstat" class="function"><a href="../pathlib.html#Path.lstat">lstat</a></dd>
-                <dd id="Path.rename" class="function"><a href="../pathlib.html#Path.rename">rename</a></dd>
-                <dd id="Path.replace" class="function"><a href="../pathlib.html#Path.replace">replace</a></dd>
-                <dd id="Path.symlink_to" class="function"><a href="../pathlib.html#Path.symlink_to">symlink_to</a></dd>
-                <dd id="Path.hardlink_to" class="function"><a href="../pathlib.html#Path.hardlink_to">hardlink_to</a></dd>
-                <dd id="Path.link_to" class="function"><a href="../pathlib.html#Path.link_to">link_to</a></dd>
-                <dd id="Path.exists" class="function"><a href="../pathlib.html#Path.exists">exists</a></dd>
-                <dd id="Path.is_dir" class="function"><a href="../pathlib.html#Path.is_dir">is_dir</a></dd>
-                <dd id="Path.is_file" class="function"><a href="../pathlib.html#Path.is_file">is_file</a></dd>
-                <dd id="Path.is_mount" class="function"><a href="../pathlib.html#Path.is_mount">is_mount</a></dd>
-                <dd id="Path.is_symlink" class="function"><a href="../pathlib.html#Path.is_symlink">is_symlink</a></dd>
-                <dd id="Path.is_block_device" class="function"><a href="../pathlib.html#Path.is_block_device">is_block_device</a></dd>
-                <dd id="Path.is_char_device" class="function"><a href="../pathlib.html#Path.is_char_device">is_char_device</a></dd>
-                <dd id="Path.is_fifo" class="function"><a href="../pathlib.html#Path.is_fifo">is_fifo</a></dd>
-                <dd id="Path.is_socket" class="function"><a href="../pathlib.html#Path.is_socket">is_socket</a></dd>
-                <dd id="Path.expanduser" class="function"><a href="../pathlib.html#Path.expanduser">expanduser</a></dd>
+                            <div id="blake2b.SALT_SIZE" class="classattr">
+                                <div class="attr variable">
+            <span class="name">SALT_SIZE</span>        =
+<span class="default_value">16</span>
 
-            </div>
-            <div><dt><a href="../pathlib.html#PurePath">pathlib.PurePath</a></dt>
-                                <dd id="Path.as_posix" class="function"><a href="../pathlib.html#PurePath.as_posix">as_posix</a></dd>
-                <dd id="Path.as_uri" class="function"><a href="../pathlib.html#PurePath.as_uri">as_uri</a></dd>
-                <dd id="Path.drive" class="variable"><a href="../pathlib.html#PurePath.drive">drive</a></dd>
-                <dd id="Path.root" class="variable"><a href="../pathlib.html#PurePath.root">root</a></dd>
-                <dd id="Path.anchor" class="variable"><a href="../pathlib.html#PurePath.anchor">anchor</a></dd>
-                <dd id="Path.name" class="variable"><a href="../pathlib.html#PurePath.name">name</a></dd>
-                <dd id="Path.suffix" class="variable"><a href="../pathlib.html#PurePath.suffix">suffix</a></dd>
-                <dd id="Path.suffixes" class="variable"><a href="../pathlib.html#PurePath.suffixes">suffixes</a></dd>
-                <dd id="Path.stem" class="variable"><a href="../pathlib.html#PurePath.stem">stem</a></dd>
-                <dd id="Path.with_name" class="function"><a href="../pathlib.html#PurePath.with_name">with_name</a></dd>
-                <dd id="Path.with_stem" class="function"><a href="../pathlib.html#PurePath.with_stem">with_stem</a></dd>
-                <dd id="Path.with_suffix" class="function"><a href="../pathlib.html#PurePath.with_suffix">with_suffix</a></dd>
-                <dd id="Path.relative_to" class="function"><a href="../pathlib.html#PurePath.relative_to">relative_to</a></dd>
-                <dd id="Path.is_relative_to" class="function"><a href="../pathlib.html#PurePath.is_relative_to">is_relative_to</a></dd>
-                <dd id="Path.parts" class="variable"><a href="../pathlib.html#PurePath.parts">parts</a></dd>
-                <dd id="Path.joinpath" class="function"><a href="../pathlib.html#PurePath.joinpath">joinpath</a></dd>
-                <dd id="Path.parent" class="variable"><a href="../pathlib.html#PurePath.parent">parent</a></dd>
-                <dd id="Path.parents" class="variable"><a href="../pathlib.html#PurePath.parents">parents</a></dd>
-                <dd id="Path.is_absolute" class="function"><a href="../pathlib.html#PurePath.is_absolute">is_absolute</a></dd>
-                <dd id="Path.is_reserved" class="function"><a href="../pathlib.html#PurePath.is_reserved">is_reserved</a></dd>
-                <dd id="Path.match" class="function"><a href="../pathlib.html#PurePath.match">match</a></dd>
+        
+    </div>
+    <a class="headerlink" href="#blake2b.SALT_SIZE"></a>
+    
+    
 
-            </div>
-                                </dl>
+                            </div>
+                            <div id="blake2b.PERSON_SIZE" class="classattr">
+                                <div class="attr variable">
+            <span class="name">PERSON_SIZE</span>        =
+<span class="default_value">16</span>
+
+        
+    </div>
+    <a class="headerlink" href="#blake2b.PERSON_SIZE"></a>
+    
+    
+
+                            </div>
+                            <div id="blake2b.MAX_KEY_SIZE" class="classattr">
+                                <div class="attr variable">
+            <span class="name">MAX_KEY_SIZE</span>        =
+<span class="default_value">64</span>
+
+        
+    </div>
+    <a class="headerlink" href="#blake2b.MAX_KEY_SIZE"></a>
+    
+    
+
+                            </div>
+                            <div id="blake2b.MAX_DIGEST_SIZE" class="classattr">
+                                <div class="attr variable">
+            <span class="name">MAX_DIGEST_SIZE</span>        =
+<span class="default_value">64</span>
+
+        
+    </div>
+    <a class="headerlink" href="#blake2b.MAX_DIGEST_SIZE"></a>
+    
+    
+
                             </div>
                 </section>
-                <section id="Register7zFormat">
+                <section id="blake2s">
                     <div class="attr class">
             
     <span class="def">class</span>
-    <span class="name">Register7zFormat</span><wbr>(<span class="base"><a href="#Path">Path</a></span>):
+    <span class="name">blake2s</span>:
 
         
     </div>
-    <a class="headerlink" href="#Register7zFormat"></a>
+    <a class="headerlink" href="#blake2s"></a>
     
-            <div class="docstring"><p>Register 7z archive format using <code>__init_subclass__</code> hook.</p>
-
-<p>To register a new archive format create a subclass of <code><a href="#Path">Path</a></code> and implement a <code>_register_archive_format()</code> method.</p>
-
-<p>Example:</p>
-
-<div class="pdoc-code codehilite">
-<pre><span></span><code><span class="k">class</span> <span class="nc">Register7zArchive</span><span class="p">(</span><span class="n">Path</span><span class="p">,</span> <span class="n">archive</span><span class="o">=</span><span class="s1">&#39;7z&#39;</span><span class="p">):</span>
-    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">_register_archive_format</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
-
-        <span class="k">try</span><span class="p">:</span>
-            <span class="kn">from</span> <span class="nn">py7zr</span> <span class="kn">import</span> <span class="n">pack_7zarchive</span><span class="p">,</span> <span class="n">unpack_7zarchive</span>
-        <span class="k">except</span> <span class="ne">ModuleNotFoundError</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ModuleNotFoundError</span><span class="p">(</span><span class="s1">&#39;pip install pathlibutil[7z]&#39;</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">shutil</span><span class="o">.</span><span class="n">register_archive_format</span><span class="p">(</span>
-                <span class="s1">&#39;7z&#39;</span><span class="p">,</span> <span class="n">pack_7zarchive</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;7zip archive&#39;</span>
-            <span class="p">)</span>
-            <span class="n">shutil</span><span class="o">.</span><span class="n">register_unpack_format</span><span class="p">(</span>
-                <span class="s1">&#39;7z&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;.7z&#39;</span><span class="p">],</span> <span class="n">unpack_7zarchive</span>
-            <span class="p">)</span>
-</code></pre>
-</div>
+            <div class="docstring"><p>Return a new BLAKE2s hash object.</p>
 </div>
 
 
-                            <div class="inherited">
-                                <h5>Inherited Members</h5>
-                                <dl>
-                                    <div><dt><a href="#Path">Path</a></dt>
-                                <dd id="Register7zFormat.default_hash" class="variable"><a href="#Path.default_hash">default_hash</a></dd>
-                <dd id="Register7zFormat.algorithms_available" class="variable"><a href="#Path.algorithms_available">algorithms_available</a></dd>
-                <dd id="Register7zFormat.hexdigest" class="function"><a href="#Path.hexdigest">hexdigest</a></dd>
-                <dd id="Register7zFormat.verify" class="function"><a href="#Path.verify">verify</a></dd>
-                <dd id="Register7zFormat.read_lines" class="function"><a href="#Path.read_lines">read_lines</a></dd>
-                <dd id="Register7zFormat.size" class="function"><a href="#Path.size">size</a></dd>
-                <dd id="Register7zFormat.copy" class="function"><a href="#Path.copy">copy</a></dd>
-                <dd id="Register7zFormat.delete" class="function"><a href="#Path.delete">delete</a></dd>
-                <dd id="Register7zFormat.move" class="function"><a href="#Path.move">move</a></dd>
-                <dd id="Register7zFormat.make_archive" class="function"><a href="#Path.make_archive">make_archive</a></dd>
-                <dd id="Register7zFormat.unpack_archive" class="function"><a href="#Path.unpack_archive">unpack_archive</a></dd>
-                <dd id="Register7zFormat.archive_formats" class="variable"><a href="#Path.archive_formats">archive_formats</a></dd>
+                            <div id="blake2s.copy" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">copy</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
-            </div>
-            <div><dt><a href="../pathlib.html#Path">pathlib.Path</a></dt>
-                                <dd id="Register7zFormat.cwd" class="function"><a href="../pathlib.html#Path.cwd">cwd</a></dd>
-                <dd id="Register7zFormat.home" class="function"><a href="../pathlib.html#Path.home">home</a></dd>
-                <dd id="Register7zFormat.samefile" class="function"><a href="../pathlib.html#Path.samefile">samefile</a></dd>
-                <dd id="Register7zFormat.iterdir" class="function"><a href="../pathlib.html#Path.iterdir">iterdir</a></dd>
-                <dd id="Register7zFormat.glob" class="function"><a href="../pathlib.html#Path.glob">glob</a></dd>
-                <dd id="Register7zFormat.rglob" class="function"><a href="../pathlib.html#Path.rglob">rglob</a></dd>
-                <dd id="Register7zFormat.absolute" class="function"><a href="../pathlib.html#Path.absolute">absolute</a></dd>
-                <dd id="Register7zFormat.resolve" class="function"><a href="../pathlib.html#Path.resolve">resolve</a></dd>
-                <dd id="Register7zFormat.stat" class="function"><a href="../pathlib.html#Path.stat">stat</a></dd>
-                <dd id="Register7zFormat.owner" class="function"><a href="../pathlib.html#Path.owner">owner</a></dd>
-                <dd id="Register7zFormat.group" class="function"><a href="../pathlib.html#Path.group">group</a></dd>
-                <dd id="Register7zFormat.open" class="function"><a href="../pathlib.html#Path.open">open</a></dd>
-                <dd id="Register7zFormat.read_bytes" class="function"><a href="../pathlib.html#Path.read_bytes">read_bytes</a></dd>
-                <dd id="Register7zFormat.read_text" class="function"><a href="../pathlib.html#Path.read_text">read_text</a></dd>
-                <dd id="Register7zFormat.write_bytes" class="function"><a href="../pathlib.html#Path.write_bytes">write_bytes</a></dd>
-                <dd id="Register7zFormat.write_text" class="function"><a href="../pathlib.html#Path.write_text">write_text</a></dd>
-                <dd id="Register7zFormat.readlink" class="function"><a href="../pathlib.html#Path.readlink">readlink</a></dd>
-                <dd id="Register7zFormat.touch" class="function"><a href="../pathlib.html#Path.touch">touch</a></dd>
-                <dd id="Register7zFormat.mkdir" class="function"><a href="../pathlib.html#Path.mkdir">mkdir</a></dd>
-                <dd id="Register7zFormat.chmod" class="function"><a href="../pathlib.html#Path.chmod">chmod</a></dd>
-                <dd id="Register7zFormat.lchmod" class="function"><a href="../pathlib.html#Path.lchmod">lchmod</a></dd>
-                <dd id="Register7zFormat.unlink" class="function"><a href="../pathlib.html#Path.unlink">unlink</a></dd>
-                <dd id="Register7zFormat.rmdir" class="function"><a href="../pathlib.html#Path.rmdir">rmdir</a></dd>
-                <dd id="Register7zFormat.lstat" class="function"><a href="../pathlib.html#Path.lstat">lstat</a></dd>
-                <dd id="Register7zFormat.rename" class="function"><a href="../pathlib.html#Path.rename">rename</a></dd>
-                <dd id="Register7zFormat.replace" class="function"><a href="../pathlib.html#Path.replace">replace</a></dd>
-                <dd id="Register7zFormat.symlink_to" class="function"><a href="../pathlib.html#Path.symlink_to">symlink_to</a></dd>
-                <dd id="Register7zFormat.hardlink_to" class="function"><a href="../pathlib.html#Path.hardlink_to">hardlink_to</a></dd>
-                <dd id="Register7zFormat.link_to" class="function"><a href="../pathlib.html#Path.link_to">link_to</a></dd>
-                <dd id="Register7zFormat.exists" class="function"><a href="../pathlib.html#Path.exists">exists</a></dd>
-                <dd id="Register7zFormat.is_dir" class="function"><a href="../pathlib.html#Path.is_dir">is_dir</a></dd>
-                <dd id="Register7zFormat.is_file" class="function"><a href="../pathlib.html#Path.is_file">is_file</a></dd>
-                <dd id="Register7zFormat.is_mount" class="function"><a href="../pathlib.html#Path.is_mount">is_mount</a></dd>
-                <dd id="Register7zFormat.is_symlink" class="function"><a href="../pathlib.html#Path.is_symlink">is_symlink</a></dd>
-                <dd id="Register7zFormat.is_block_device" class="function"><a href="../pathlib.html#Path.is_block_device">is_block_device</a></dd>
-                <dd id="Register7zFormat.is_char_device" class="function"><a href="../pathlib.html#Path.is_char_device">is_char_device</a></dd>
-                <dd id="Register7zFormat.is_fifo" class="function"><a href="../pathlib.html#Path.is_fifo">is_fifo</a></dd>
-                <dd id="Register7zFormat.is_socket" class="function"><a href="../pathlib.html#Path.is_socket">is_socket</a></dd>
-                <dd id="Register7zFormat.expanduser" class="function"><a href="../pathlib.html#Path.expanduser">expanduser</a></dd>
+        
+    </div>
+    <a class="headerlink" href="#blake2s.copy"></a>
+    
+            <div class="docstring"><p>Return a copy of the hash object.</p>
+</div>
 
-            </div>
-            <div><dt><a href="../pathlib.html#PurePath">pathlib.PurePath</a></dt>
-                                <dd id="Register7zFormat.as_posix" class="function"><a href="../pathlib.html#PurePath.as_posix">as_posix</a></dd>
-                <dd id="Register7zFormat.as_uri" class="function"><a href="../pathlib.html#PurePath.as_uri">as_uri</a></dd>
-                <dd id="Register7zFormat.drive" class="variable"><a href="../pathlib.html#PurePath.drive">drive</a></dd>
-                <dd id="Register7zFormat.root" class="variable"><a href="../pathlib.html#PurePath.root">root</a></dd>
-                <dd id="Register7zFormat.anchor" class="variable"><a href="../pathlib.html#PurePath.anchor">anchor</a></dd>
-                <dd id="Register7zFormat.name" class="variable"><a href="../pathlib.html#PurePath.name">name</a></dd>
-                <dd id="Register7zFormat.suffix" class="variable"><a href="../pathlib.html#PurePath.suffix">suffix</a></dd>
-                <dd id="Register7zFormat.suffixes" class="variable"><a href="../pathlib.html#PurePath.suffixes">suffixes</a></dd>
-                <dd id="Register7zFormat.stem" class="variable"><a href="../pathlib.html#PurePath.stem">stem</a></dd>
-                <dd id="Register7zFormat.with_name" class="function"><a href="../pathlib.html#PurePath.with_name">with_name</a></dd>
-                <dd id="Register7zFormat.with_stem" class="function"><a href="../pathlib.html#PurePath.with_stem">with_stem</a></dd>
-                <dd id="Register7zFormat.with_suffix" class="function"><a href="../pathlib.html#PurePath.with_suffix">with_suffix</a></dd>
-                <dd id="Register7zFormat.relative_to" class="function"><a href="../pathlib.html#PurePath.relative_to">relative_to</a></dd>
-                <dd id="Register7zFormat.is_relative_to" class="function"><a href="../pathlib.html#PurePath.is_relative_to">is_relative_to</a></dd>
-                <dd id="Register7zFormat.parts" class="variable"><a href="../pathlib.html#PurePath.parts">parts</a></dd>
-                <dd id="Register7zFormat.joinpath" class="function"><a href="../pathlib.html#PurePath.joinpath">joinpath</a></dd>
-                <dd id="Register7zFormat.parent" class="variable"><a href="../pathlib.html#PurePath.parent">parent</a></dd>
-                <dd id="Register7zFormat.parents" class="variable"><a href="../pathlib.html#PurePath.parents">parents</a></dd>
-                <dd id="Register7zFormat.is_absolute" class="function"><a href="../pathlib.html#PurePath.is_absolute">is_absolute</a></dd>
-                <dd id="Register7zFormat.is_reserved" class="function"><a href="../pathlib.html#PurePath.is_reserved">is_reserved</a></dd>
-                <dd id="Register7zFormat.match" class="function"><a href="../pathlib.html#PurePath.match">match</a></dd>
 
-            </div>
-                                </dl>
                             </div>
+                            <div id="blake2s.digest" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">digest</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#blake2s.digest"></a>
+    
+            <div class="docstring"><p>Return the digest value as a bytes object.</p>
+</div>
+
+
+                            </div>
+                            <div id="blake2s.hexdigest" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">hexdigest</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#blake2s.hexdigest"></a>
+    
+            <div class="docstring"><p>Return the digest value as a string of hexadecimal digits.</p>
+</div>
+
+
+                            </div>
+                            <div id="blake2s.update" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">update</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">data</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#blake2s.update"></a>
+    
+            <div class="docstring"><p>Update this hash object's state with the provided bytes-like object.</p>
+</div>
+
+
+                            </div>
+                            <div id="blake2s.name" class="classattr">
+                                <div class="attr variable">
+            <span class="name">name</span>
+
+        
+    </div>
+    <a class="headerlink" href="#blake2s.name"></a>
+    
+    
+
+                            </div>
+                            <div id="blake2s.block_size" class="classattr">
+                                <div class="attr variable">
+            <span class="name">block_size</span>
+
+        
+    </div>
+    <a class="headerlink" href="#blake2s.block_size"></a>
+    
+    
+
+                            </div>
+                            <div id="blake2s.digest_size" class="classattr">
+                                <div class="attr variable">
+            <span class="name">digest_size</span>
+
+        
+    </div>
+    <a class="headerlink" href="#blake2s.digest_size"></a>
+    
+    
+
+                            </div>
+                            <div id="blake2s.SALT_SIZE" class="classattr">
+                                <div class="attr variable">
+            <span class="name">SALT_SIZE</span>        =
+<span class="default_value">8</span>
+
+        
+    </div>
+    <a class="headerlink" href="#blake2s.SALT_SIZE"></a>
+    
+    
+
+                            </div>
+                            <div id="blake2s.PERSON_SIZE" class="classattr">
+                                <div class="attr variable">
+            <span class="name">PERSON_SIZE</span>        =
+<span class="default_value">8</span>
+
+        
+    </div>
+    <a class="headerlink" href="#blake2s.PERSON_SIZE"></a>
+    
+    
+
+                            </div>
+                            <div id="blake2s.MAX_KEY_SIZE" class="classattr">
+                                <div class="attr variable">
+            <span class="name">MAX_KEY_SIZE</span>        =
+<span class="default_value">32</span>
+
+        
+    </div>
+    <a class="headerlink" href="#blake2s.MAX_KEY_SIZE"></a>
+    
+    
+
+                            </div>
+                            <div id="blake2s.MAX_DIGEST_SIZE" class="classattr">
+                                <div class="attr variable">
+            <span class="name">MAX_DIGEST_SIZE</span>        =
+<span class="default_value">32</span>
+
+        
+    </div>
+    <a class="headerlink" href="#blake2s.MAX_DIGEST_SIZE"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="sha3_224">
+                    <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">sha3_224</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">string</span><span class="o">=</span><span class="sa">b</span><span class="s1">&#39;&#39;</span>, </span><span class="param"><span class="o">*</span>, </span><span class="param"><span class="n">usedforsecurity</span><span class="o">=</span><span class="kc">True</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#sha3_224"></a>
+    
+            <div class="docstring"><p>Returns a sha3-224 hash object; optionally initialized with a string</p>
+</div>
+
+
+                </section>
+                <section id="sha3_256">
+                    <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">sha3_256</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">string</span><span class="o">=</span><span class="sa">b</span><span class="s1">&#39;&#39;</span>, </span><span class="param"><span class="o">*</span>, </span><span class="param"><span class="n">usedforsecurity</span><span class="o">=</span><span class="kc">True</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#sha3_256"></a>
+    
+            <div class="docstring"><p>Returns a sha3-256 hash object; optionally initialized with a string</p>
+</div>
+
+
+                </section>
+                <section id="sha3_384">
+                    <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">sha3_384</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">string</span><span class="o">=</span><span class="sa">b</span><span class="s1">&#39;&#39;</span>, </span><span class="param"><span class="o">*</span>, </span><span class="param"><span class="n">usedforsecurity</span><span class="o">=</span><span class="kc">True</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#sha3_384"></a>
+    
+            <div class="docstring"><p>Returns a sha3-384 hash object; optionally initialized with a string</p>
+</div>
+
+
+                </section>
+                <section id="sha3_512">
+                    <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">sha3_512</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">string</span><span class="o">=</span><span class="sa">b</span><span class="s1">&#39;&#39;</span>, </span><span class="param"><span class="o">*</span>, </span><span class="param"><span class="n">usedforsecurity</span><span class="o">=</span><span class="kc">True</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#sha3_512"></a>
+    
+            <div class="docstring"><p>Returns a sha3-512 hash object; optionally initialized with a string</p>
+</div>
+
+
+                </section>
+                <section id="shake_128">
+                    <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">shake_128</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">string</span><span class="o">=</span><span class="sa">b</span><span class="s1">&#39;&#39;</span>, </span><span class="param"><span class="o">*</span>, </span><span class="param"><span class="n">usedforsecurity</span><span class="o">=</span><span class="kc">True</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#shake_128"></a>
+    
+            <div class="docstring"><p>Returns a shake-128 variable hash object; optionally initialized with a string</p>
+</div>
+
+
+                </section>
+                <section id="shake_256">
+                    <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">shake_256</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">string</span><span class="o">=</span><span class="sa">b</span><span class="s1">&#39;&#39;</span>, </span><span class="param"><span class="o">*</span>, </span><span class="param"><span class="n">usedforsecurity</span><span class="o">=</span><span class="kc">True</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#shake_256"></a>
+    
+            <div class="docstring"><p>Returns a shake-256 variable hash object; optionally initialized with a string</p>
+</div>
+
+
+                </section>
+                <section id="new">
+                    <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">new</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">name</span>, </span><span class="param"><span class="n">data</span><span class="o">=</span><span class="sa">b</span><span class="s1">&#39;&#39;</span>, </span><span class="param"><span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#new"></a>
+    
+            <div class="docstring"><p>new(name, data=b'') - Return a new hashing object using the named algorithm;
+optionally initialized with data (which must be a bytes-like object).</p>
+</div>
+
+
+                </section>
+                <section id="algorithms_guaranteed">
+                    <div class="attr variable">
+            <span class="name">algorithms_guaranteed</span>        =
+<input id="algorithms_guaranteed-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+            <label class="view-value-button pdoc-button" for="algorithms_guaranteed-view-value"></label><span class="default_value">{&#39;sha512&#39;, &#39;sha256&#39;, &#39;sha384&#39;, &#39;sha3_256&#39;, &#39;sha3_512&#39;, &#39;md5&#39;, &#39;shake_128&#39;, &#39;blake2b&#39;, &#39;shake_256&#39;, &#39;blake2s&#39;, &#39;sha224&#39;, &#39;sha3_224&#39;, &#39;sha1&#39;, &#39;sha3_384&#39;}</span>
+
+        
+    </div>
+    <a class="headerlink" href="#algorithms_guaranteed"></a>
+    
+    
+
+                </section>
+                <section id="algorithms_available">
+                    <div class="attr variable">
+            <span class="name">algorithms_available</span>        =
+<input id="algorithms_available-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+            <label class="view-value-button pdoc-button" for="algorithms_available-view-value"></label><span class="default_value">{&#39;sm3&#39;, &#39;sha3_256&#39;, &#39;sha3_224&#39;, &#39;md5-sha1&#39;, &#39;sha512_224&#39;, &#39;sha3_512&#39;, &#39;shake_128&#39;, &#39;sha3_384&#39;, &#39;sha512&#39;, &#39;sha256&#39;, &#39;sha384&#39;, &#39;md5&#39;, &#39;shake_256&#39;, &#39;blake2s&#39;, &#39;sha224&#39;, &#39;sha1&#39;, &#39;ripemd160&#39;, &#39;sha512_256&#39;, &#39;blake2b&#39;}</span>
+
+        
+    </div>
+    <a class="headerlink" href="#algorithms_available"></a>
+    
+    
+
+                </section>
+                <section id="pbkdf2_hmac">
+                    <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">pbkdf2_hmac</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">hash_name</span>, </span><span class="param"><span class="n">password</span>, </span><span class="param"><span class="n">salt</span>, </span><span class="param"><span class="n">iterations</span>, </span><span class="param"><span class="n">dklen</span><span class="o">=</span><span class="kc">None</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#pbkdf2_hmac"></a>
+    
+            <div class="docstring"><p>Password based key derivation function 2 (PKCS #5 v2.0) with HMAC as pseudorandom function.</p>
+</div>
+
+
+                </section>
+                <section id="file_digest">
+                    <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">file_digest</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">fileobj</span>, </span><span class="param"><span class="n">digest</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="o">*</span>, </span><span class="param"><span class="n">_bufsize</span><span class="o">=</span><span class="mi">262144</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#file_digest"></a>
+    
+            <div class="docstring"><p>Hash the contents of a file-like object. Returns a digest object.</p>
+
+<p><em>fileobj</em> must be a file-like object opened for reading in binary mode.
+It accepts file objects from open(), io.BytesIO(), and SocketIO objects.
+The function may bypass Python's I/O and use the file descriptor <em>fileno</em>
+directly.</p>
+
+<p><em>digest</em> must either be a hash algorithm name as a <em>str</em>, a hash
+constructor, or a callable that returns a hash object.</p>
+</div>
+
+
                 </section>
     </main>
 <script>
@@ -537,7 +855,7 @@
                 script.async = true;
                 script.onload = () => resolve(window.pdocSearch);
                 script.onerror = (e) => reject(e);
-                script.src = "../search.js";
+                script.src = "search.js";
                 document.getElementsByTagName("head")[0].appendChild(script);
             });
         } catch (e) {
@@ -579,7 +897,7 @@
             }
             for (let result of results.slice(0, 10)) {
                 let doc = result.doc;
-                let url = `../${doc.modulename.replaceAll(".", "/")}.html`;
+                let url = `${doc.modulename.replaceAll(".", "/")}.html`;
                 if (doc.qualname) {
                     url += `#${doc.qualname}`;
                 }
