@@ -167,18 +167,19 @@ pip<span class="w"> </span>install<span class="w"> </span>pathlibutil<span class
 <p>Read a file and print its content and some file information to stdout.</p>
 
 <blockquote>
-  <p><code>Path().read_lines()</code></p>
+  <p><code><a href="#Path.read_lines">Path.read_lines()</a></code></p>
 </blockquote>
 
 <div class="pdoc-code codehilite">
-<pre><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<pre><span></span><code><span class="n">readme</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;README.md&#39;</span><span class="p">)</span>
 
-<span class="n">readme</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;README.md&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;File size: </span><span class="si">{</span><span class="n">readme</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="si">}</span><span class="s1"> Bytes&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;File sha1: </span><span class="si">{</span><span class="n">readme</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">(</span><span class="s2">&quot;sha1&quot;</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;File content&#39;</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="s1">&#39;=&#39;</span><span class="p">))</span>
 
 <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">readme</span><span class="o">.</span><span class="n">read_lines</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">):</span>
-   <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;EOF&#39;</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="s1">&#39;=&#39;</span><span class="p">))</span>
 </code></pre>
@@ -189,25 +190,21 @@ pip<span class="w"> </span>install<span class="w"> </span>pathlibutil<span class
 <p>Write a file with md5 checksums of all python files in the pathlibutil-directory.</p>
 
 <blockquote>
-  <p><code>Path().hexdigest()</code></p>
+  <p><code><a href="#Path.hexdigest">Path.hexdigest()</a></code></p>
 </blockquote>
 
 <div class="pdoc-code codehilite">
-<pre><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-
-<span class="n">file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;pathlibutil.md5&#39;</span><span class="p">)</span>
-
-<span class="n">algorithm</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">suffix</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<pre><span></span><code><span class="n">file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;pathlibutil.md5&#39;</span><span class="p">)</span>
 
 <span class="k">with</span> <span class="n">file</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-   <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
-      <span class="sa">f</span><span class="s1">&#39;# </span><span class="si">{</span><span class="n">algorithm</span><span class="si">}</span><span class="s1"> checksums generated with pathlibutil (https://pypi.org/project/pathlibutil/)</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="p">)</span>
+  <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
+      <span class="s1">&#39;# MD5 checksums generated with pathlibutil (https://pypi.org/project/pathlibutil/)</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="p">)</span>
 
-   <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
-   <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">filename</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;./pathlibutil&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;*.py&#39;</span><span class="p">),</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-      <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">filename</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">(</span><span class="n">algorithm</span><span class="p">)</span><span class="si">}</span><span class="s1"> *</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+  <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">filename</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;./pathlibutil&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;*.py&#39;</span><span class="p">),</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">filename</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span><span class="si">}</span><span class="s1"> *</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">written: </span><span class="si">{</span><span class="n">i</span><span class="si">:</span><span class="s1">&gt;5</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">algorithm</span><span class="si">}</span><span class="s1">-hashes to: </span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">written: </span><span class="si">{</span><span class="n">i</span><span class="si">:</span><span class="s1">&gt;5</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">file</span><span class="o">.</span><span class="n">default_hash</span><span class="si">}</span><span class="s1">-hashes to: </span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </code></pre>
 </div>
 
@@ -216,33 +213,42 @@ pip<span class="w"> </span>install<span class="w"> </span>pathlibutil<span class
 <p>Read a file with md5 checksums and verify them.</p>
 
 <blockquote>
-  <p><code>Path().verify()</code>, <code><a href="#Path.default_hash">Path.default_hash</a></code> and <code>contextmanager</code></p>
+  <p><code><a href="#Path.verify">Path.verify()</a></code>, <code><a href="#Path.default_hash">Path.default_hash</a></code> and <code>contextmanager</code></p>
 </blockquote>
 
 <div class="pdoc-code codehilite">
-<pre><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<pre><span></span><code><span class="n">file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;pathlibutil.md5&#39;</span><span class="p">)</span>
 
-<span class="n">file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;pathlibutil.md5&#39;</span><span class="p">)</span>
-
-<span class="n"><a href="#Path.default_hash">Path.default_hash</a></span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">suffix</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
 
 <span class="k">def</span> <span class="nf">no_comment</span><span class="p">(</span><span class="n">line</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-   <span class="k">return</span> <span class="ow">not</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">)</span>
+  <span class="k">return</span> <span class="ow">not</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">)</span>
+
 
 <span class="k">with</span> <span class="n">file</span><span class="o">.</span><span class="n">parent</span> <span class="k">as</span> <span class="n">cwd</span><span class="p">:</span>
+  <span class="n">miss</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">ok</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">fail</span> <span class="o">=</span> <span class="mi">0</span>
 
-   <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">filter</span><span class="p">(</span><span class="n">no_comment</span><span class="p">,</span> <span class="n">file</span><span class="o">.</span><span class="n">read_lines</span><span class="p">()):</span>
-      <span class="k">try</span><span class="p">:</span>
-            <span class="n">digest</span><span class="p">,</span> <span class="n">filename</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; *&#39;</span><span class="p">)</span>
-            <span class="n">verification</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span><span class="o">.</span><span class="n">verify</span><span class="p">(</span><span class="n">digest</span><span class="p">)</span>
-      <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">split_failed</span><span class="p">:</span>
-            <span class="k">continue</span>
-      <span class="k">except</span> <span class="ne">FileNotFoundError</span> <span class="k">as</span> <span class="n">verify_failed</span><span class="p">:</span>
-            <span class="n">tag</span> <span class="o">=</span> <span class="s1">&#39;missing&#39;</span>
+  <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">filter</span><span class="p">(</span><span class="n">no_comment</span><span class="p">,</span> <span class="n">file</span><span class="o">.</span><span class="n">read_lines</span><span class="p">()):</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">digest</span><span class="p">,</span> <span class="n">filename</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; *&#39;</span><span class="p">)</span>
+      <span class="n">verification</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span><span class="o">.</span><span class="n">verify</span><span class="p">(</span><span class="n">digest</span><span class="p">,</span> <span class="s1">&#39;md5&#39;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">split_failed</span><span class="p">:</span>
+      <span class="k">continue</span>
+    <span class="k">except</span> <span class="ne">FileNotFoundError</span> <span class="k">as</span> <span class="n">verify_failed</span><span class="p">:</span>
+      <span class="n">tag</span> <span class="o">=</span> <span class="s1">&#39;missing&#39;</span>
+      <span class="n">miss</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">if</span> <span class="n">verification</span><span class="p">:</span>
+        <span class="n">tag</span> <span class="o">=</span> <span class="s1">&#39;ok&#39;</span>
+        <span class="n">ok</span> <span class="o">+=</span> <span class="mi">1</span>
       <span class="k">else</span><span class="p">:</span>
-            <span class="n">tag</span> <span class="o">=</span> <span class="s1">&#39;ok&#39;</span> <span class="k">if</span> <span class="n">verification</span> <span class="k">else</span> <span class="s1">&#39;fail</span>
+        <span class="n">tag</span> <span class="o">=</span> <span class="s1">&#39;fail&#39;</span>
+        <span class="n">fail</span> <span class="o">+=</span> <span class="mi">1</span>
 
-      <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">tag</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">digest</span><span class="p">),</span><span class="w"> </span><span class="s2">&quot;.&quot;</span><span class="p">)</span><span class="si">}</span><span class="s1"> *</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">tag</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">digest</span><span class="p">),</span><span class="w"> </span><span class="s2">&quot;.&quot;</span><span class="p">)</span><span class="si">}</span><span class="s1"> *</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">ok: </span><span class="si">{</span><span class="n">ok</span><span class="si">:</span><span class="s1">&lt;5</span><span class="si">}</span><span class="s1"> fail: </span><span class="si">{</span><span class="n">fail</span><span class="si">:</span><span class="s1">&lt;5</span><span class="si">}</span><span class="s1"> missing: </span><span class="si">{</span><span class="n">miss</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </code></pre>
 </div>
 
@@ -251,23 +257,21 @@ pip<span class="w"> </span>install<span class="w"> </span>pathlibutil<span class
 <p>Search all pycache directories and free the memory.</p>
 
 <blockquote>
-  <p><code>Path().delete()</code> and <code>Path().size()</code></p>
+  <p><code><a href="#Path.delete">Path.delete()</a></code> and <code><a href="#Path.size">Path.size()</a></code></p>
 </blockquote>
 
 <div class="pdoc-code codehilite">
-<pre><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-
-<span class="n">mem</span> <span class="o">=</span> <span class="mi">0</span>
+<pre><span></span><code><span class="n">mem</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
 
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">cache</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s1">&#39;*/__pycache__/&#39;</span><span class="p">),</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-      <span class="n">cache_size</span> <span class="o">=</span> <span class="n">cache</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
-      <span class="k">try</span><span class="p">:</span>
-            <span class="n">cache</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-      <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Failed to delete </span><span class="si">{</span><span class="n">cache</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-      <span class="k">else</span><span class="p">:</span>
-            <span class="n">mem</span> <span class="o">+=</span> <span class="n">cache_size</span>
+  <span class="n">cache_size</span> <span class="o">=</span> <span class="n">cache</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+  <span class="k">try</span><span class="p">:</span>
+    <span class="n">cache</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+  <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Failed to delete </span><span class="si">{</span><span class="n">cache</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">mem</span> <span class="o">+=</span> <span class="n">cache_size</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1"> cache directories deleted, </span><span class="si">{</span><span class="n">mem</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="o">**</span><span class="mi">20</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> MB freed.&#39;</span><span class="p">)</span>
 </code></pre>
@@ -280,63 +284,60 @@ Specify a <code>archive</code> as keyword argument in the new subclass, which ha
 Implement a classmethod <code>_register_archive_format()</code> to register new archive formats.</p>
 
 <blockquote>
-  <p><code>Path().make_archive()</code>, <code><a href="#Path.archive_formats">Path.archive_formats</a></code> and <code>Path().move()</code></p>
+  <p><code><a href="#Path.make_archive">Path.make_archive()</a></code>, <code><a href="#Path.archive_formats">Path.archive_formats</a></code> and <code><a href="#Path.move">Path.move()</a></code></p>
 </blockquote>
 
 <div class="pdoc-code codehilite">
 <pre><span></span><code><span class="kn">import</span> <span class="nn">shutil</span>
-<span class="kn">import</span> <span class="nn">pathlibutil</span>
+
 
 <span class="k">class</span> <span class="nc">RegisterFooBarFormat</span><span class="p">(</span><span class="n"><a href="#Path">pathlibutil.Path</a></span><span class="p">,</span> <span class="n">archive</span><span class="o">=</span><span class="s1">&#39;foobar&#39;</span><span class="p">):</span>
-      <span class="nd">@classmethod</span>
-      <span class="k">def</span> <span class="nf">_register_archive_format</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
-<span class="w">      </span><span class="sd">&quot;&quot;&quot; </span>
-<span class="sd">            implement new register functions for given `archive`</span>
+  <span class="nd">@classmethod</span>
+  <span class="k">def</span> <span class="nf">_register_archive_format</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; </span>
+<span class="sd">        implement new register functions for given `archive`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="kn">import</span> <span class="nn">required_package_name</span>
+    <span class="k">except</span> <span class="ne">ModuleNotFoundError</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ModuleNotFoundError</span><span class="p">(</span>
+          <span class="s1">&#39;pip install &lt;required_package_name&gt;&#39;</span>
+      <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">pack_foobar</span><span class="p">(</span><span class="n">base_name</span><span class="p">,</span> <span class="n">base_dir</span><span class="p">,</span> <span class="n">owner</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dry_run</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">      </span><span class="sd">&quot;&quot;&quot;callable that will be used to unpack archives.</span>
+
+<span class="sd">      Args:</span>
+<span class="sd">          base_name (`str`): name of the file to create</span>
+<span class="sd">          base_dir (`str`): directory to start archiving from, defaults to `os.curdir`</span>
+<span class="sd">          owner (`Any`, optional): as passed in `make_archive(*args, owner=None, **kwargs)`. Defaults to None.</span>
+<span class="sd">          group (`Any`, optional): as passed in `make_archive(*args, group=None, **kwargs)`. Defaults to None.</span>
+<span class="sd">          dry_run (`Any`, optional): as passed in `make_archive(*args, dry_run=None, **kwargs)`. Defaults to None.</span>
+<span class="sd">          logger (`logging.Logger`, optional): as passed in `make_archive(*args, logger=None, **kwargs)`. Defaults to None.</span>
+
+<span class="sd">      Returns:</span>
+<span class="sd">          str: path of the new created archive</span>
 <span class="sd">      &quot;&quot;&quot;</span>
-      <span class="k">try</span><span class="p">:</span>
-            <span class="kn">import</span> <span class="o">&lt;</span><span class="n">required_package_name</span><span class="o">&gt;</span>
-      <span class="k">except</span> <span class="ne">ModuleNotFoundError</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ModuleNotFoundError</span><span class="p">(</span>
-                  <span class="s1">&#39;pip install &lt;required_package_name&gt;&#39;</span>
-            <span class="p">)</span>
+      <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;implement your own pack function&#39;</span><span class="p">)</span>
 
-      <span class="k">def</span> <span class="nf">pack_foobar</span><span class="p">(</span><span class="n">base_name</span><span class="p">,</span> <span class="n">base_dir</span><span class="p">,</span> <span class="n">owner</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dry_run</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">            </span><span class="sd">&quot;&quot;&quot;callable that will be used to unpack archives.</span>
+    <span class="k">def</span> <span class="nf">unpack_foobar</span><span class="p">(</span><span class="n">archive</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">extra_args</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">      </span><span class="sd">&quot;&quot;&quot;callable that will be used to unpack archives. </span>
 
-<span class="sd">            Args:</span>
-<span class="sd">                  base_name (`str`): name of the file to create</span>
-<span class="sd">                  base_dir (`str`): directory to start archiving from, defaults to `os.curdir`</span>
-<span class="sd">                  owner (`Any`, optional): as passed in `make_archive(*args, owner=None, **kwargs)`. Defaults to None.</span>
-<span class="sd">                  group (`Any`, optional): as passed in `make_archive(*args, group=None, **kwargs)`. Defaults to None.</span>
-<span class="sd">                  dry_run (`Any`, optional): as passed in `make_archive(*args, dry_run=None, **kwargs)`. </span>
-<span class="sd">                        Defaults to None.</span>
-<span class="sd">                  logger (`logging.Logger`, optional): as passed in `make_archive(*args, logger=None, **kwargs)`. </span>
-<span class="sd">                        Defaults to None.</span>
+<span class="sd">      Args:</span>
+<span class="sd">          archive (`str`): path of the archive</span>
+<span class="sd">          path (`str`): directory the archive must be extracted to</span>
+<span class="sd">          filter (`Any`, optional): as passed in `unpack_archive(*args, filter=None, **kwargs)`. Defaults to None.</span>
+<span class="sd">          extra_args (`Sequence[Tuple[name, value]]`, optional): additional keyword arguments, specified by `register_unpack_format(*args, extra_args=None, **kwargs)`. Defaults to None.</span>
+<span class="sd">      &quot;&quot;&quot;</span>
+      <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;implement your own unpack function&#39;</span><span class="p">)</span>
 
-<span class="sd">            Returns:</span>
-<span class="sd">                  str: path of the new created archive</span>
-<span class="sd">            &quot;&quot;&quot;</span>
-            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;implement your own pack function&#39;</span><span class="p">)</span>
+    <span class="n"><a href="shutil.html#register_archive_format">shutil.register_archive_format</a></span><span class="p">(</span>
+        <span class="s1">&#39;foobar&#39;</span><span class="p">,</span> <span class="n">pack_foobar</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;foobar archives&#39;</span>
+    <span class="p">)</span>
+    <span class="n"><a href="shutil.html#register_unpack_format">shutil.register_unpack_format</a></span><span class="p">(</span>
+        <span class="s1">&#39;foobar&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;.foo.bar&#39;</span><span class="p">],</span> <span class="n">unpack_foobar</span>
+    <span class="p">)</span>
 
-      <span class="k">def</span> <span class="nf">unpack_foobar</span><span class="p">(</span><span class="n">archive</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">extra_args</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">            </span><span class="sd">&quot;&quot;&quot;callable that will be used to unpack archives. </span>
-
-<span class="sd">            Args:</span>
-<span class="sd">                  archive (`str`): path of the archive</span>
-<span class="sd">                  path (`str`): directory the archive must be extracted to</span>
-<span class="sd">                  filter (`Any`, optional): as passed in `unpack_archive(*args, filter=None, **kwargs)`.</span>
-<span class="sd">                        Defaults to None.</span>
-<span class="sd">                  extra_args (`Sequence[Tuple[name, value]]`, optional): additional keyword arguments. </span>
-<span class="sd">                        as passd in `register_unpack_format(*args, extra_args=None, **kwargs)`. Defaults to None.</span>
-<span class="sd">            &quot;&quot;&quot;</span>
-            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;implement your own unpack function&#39;</span><span class="p">)</span>
-
-      <span class="n"><a href="shutil.html#register_archive_format">shutil.register_archive_format</a></span><span class="p">(</span>
-            <span class="s1">&#39;foobar&#39;</span><span class="p">,</span> <span class="n">pack_foobar</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;foobar archives&#39;</span>
-      <span class="p">)</span>
-      <span class="n"><a href="shutil.html#register_unpack_format">shutil.register_unpack_format</a></span><span class="p">(</span>
-            <span class="s1">&#39;foobar&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;.foo.bar&#39;</span><span class="p">],</span> <span class="n">unpack_foobar</span>
-      <span class="p">)</span>
 
 <span class="n">file</span> <span class="o">=</span> <span class="n"><a href="#Path">pathlibutil.Path</a></span><span class="p">(</span><span class="s1">&#39;README.md&#39;</span><span class="p">)</span>
 
@@ -535,7 +536,7 @@ directory does not exist.</p>
 
 <p>If <code>recursive</code> is <code>False</code> an <code>OSError</code> is raised if the directory is not empty.</p>
 
-<p>If <code>recursive</code> is <code>True</code> the directory will be deleted with all its  content
+<p>If <code>recursive</code> is <code>True</code> the directory will be deleted with all its content
 (files and subdirectories).</p>
 
 <ul>
@@ -614,15 +615,16 @@ extracted files.</p>
                             </div>
                             <div id="Path.archive_formats" class="classattr">
                                 <div class="attr variable">
-            <span class="name">archive_formats</span><span class="annotation">: List[str]</span>
+            <span class="name">archive_formats</span><span class="annotation">: Set[str]</span>
 
         
     </div>
     <a class="headerlink" href="#Path.archive_formats"></a>
     
-            <div class="docstring"><p>Returns a list of supported archive formats.</p>
+            <div class="docstring"><p>Returns a set with names of the supported archive formats.</p>
 
-<p>The list contains all built-in formats and all formats registered by subclasses
+<p>The set contains all built-in formats from <code><a href="shutil.html#get_archive_formats">shutil.get_archive_formats()</a></code>
+and all formats registered by subclasse
 (eg. <a href="#Register7zFormat">Register7zFormat</a>).</p>
 </div>
 
