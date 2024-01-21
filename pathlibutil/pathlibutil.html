@@ -88,6 +88,21 @@
                 </ul>
 
             </li>
+            <li>
+                    <a class="class" href="#ByteInt">ByteInt</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#ByteInt.units">units</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#ByteInt.info">info</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="function" href="#byteint">byteint</a>
+            </li>
     </ul>
 
 
@@ -130,6 +145,7 @@ pathlibutil    </h1>
 <li><code><a href="#Path.move">Path.move()</a></code> move a file or directory to a new path destination</li>
 <li><code><a href="#Path.make_archive">Path.make_archive()</a></code> creates and <code><a href="#Path.unpack_archive">Path.unpack_archive()</a></code> uncompresses an archive from a file or directory</li>
 <li><code><a href="#Path.archive_formats">Path.archive_formats</a></code> to get all available archive formats</li>
+<li><code><a href="#byteint">byteint</a></code> function decorator to convert return value of <code>int</code> to a <code><a href="#ByteInt">ByteInt</a></code> object</li>
 </ul>
 
 <h2 id="installation">Installation</h2>
@@ -171,17 +187,19 @@ pip<span class="w"> </span>install<span class="w"> </span>pathlibutil<span class
 </blockquote>
 
 <div class="pdoc-code codehilite">
-<pre><span></span><code><span class="n">readme</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;README.md&#39;</span><span class="p">)</span>
+<pre><span></span><code><span class="kn">from</span> <span class="nn">pathlibutil</span> <span class="kn">import</span> <span class="n">Path</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;File size: </span><span class="si">{</span><span class="n">readme</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="si">}</span><span class="s1"> Bytes&#39;</span><span class="p">)</span>
+<span class="n">readme</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;README.md&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;File size: </span><span class="si">{</span><span class="n">readme</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="si">}</span><span class="s2"> Bytes&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;File sha1: </span><span class="si">{</span><span class="n">readme</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">(</span><span class="s2">&quot;sha1&quot;</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;File content&#39;</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="s1">&#39;=&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;File content&quot;</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="s2">&quot;=&quot;</span><span class="p">))</span>
 
-<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">readme</span><span class="o">.</span><span class="n">read_lines</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">):</span>
-  <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">readme</span><span class="o">.</span><span class="n">read_lines</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;EOF&#39;</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="s1">&#39;=&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;EOF&quot;</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="s2">&quot;=&quot;</span><span class="p">))</span>
 </code></pre>
 </div>
 
@@ -194,17 +212,21 @@ pip<span class="w"> </span>install<span class="w"> </span>pathlibutil<span class
 </blockquote>
 
 <div class="pdoc-code codehilite">
-<pre><span></span><code><span class="n">file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;pathlibutil.md5&#39;</span><span class="p">)</span>
+<pre><span></span><code><span class="kn">from</span> <span class="nn">pathlibutil</span> <span class="kn">import</span> <span class="n">Path</span>
 
-<span class="k">with</span> <span class="n">file</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="n">file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;pathlibutil.md5&quot;</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">file</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
   <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
-      <span class="s1">&#39;# MD5 checksums generated with pathlibutil (https://pypi.org/project/pathlibutil/)</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="p">)</span>
+      <span class="sa">f</span><span class="s2">&quot;# MD5 checksums generated with pathlibutil &quot;</span>
+      <span class="s2">&quot;(https://pypi.org/project/pathlibutil/)</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+  <span class="p">)</span>
 
   <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
-  <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">filename</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;./pathlibutil&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;*.py&#39;</span><span class="p">),</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">filename</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span><span class="si">}</span><span class="s1"> *</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+  <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">filename</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;./pathlibutil&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;*.py&quot;</span><span class="p">),</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">filename</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span><span class="si">}</span><span class="s2"> *</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">written: </span><span class="si">{</span><span class="n">i</span><span class="si">:</span><span class="s1">&gt;5</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">file</span><span class="o">.</span><span class="n">default_hash</span><span class="si">}</span><span class="s1">-hashes to: </span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">written: </span><span class="si">{</span><span class="n">i</span><span class="si">:</span><span class="s2">&gt;5</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">file</span><span class="o">.</span><span class="n">default_hash</span><span class="si">}</span><span class="s2">-hashes to: </span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre>
 </div>
 
@@ -217,11 +239,13 @@ pip<span class="w"> </span>install<span class="w"> </span>pathlibutil<span class
 </blockquote>
 
 <div class="pdoc-code codehilite">
-<pre><span></span><code><span class="n">file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;pathlibutil.md5&#39;</span><span class="p">)</span>
+<pre><span></span><code><span class="kn">from</span> <span class="nn">pathlibutil</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;pathlibutil.md5&quot;</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">no_comment</span><span class="p">(</span><span class="n">line</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-  <span class="k">return</span> <span class="ow">not</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">)</span>
+  <span class="k">return</span> <span class="ow">not</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="p">)</span>
 
 
 <span class="k">with</span> <span class="n">file</span><span class="o">.</span><span class="n">parent</span> <span class="k">as</span> <span class="n">cwd</span><span class="p">:</span>
@@ -231,80 +255,85 @@ pip<span class="w"> </span>install<span class="w"> </span>pathlibutil<span class
 
   <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">filter</span><span class="p">(</span><span class="n">no_comment</span><span class="p">,</span> <span class="n">file</span><span class="o">.</span><span class="n">read_lines</span><span class="p">()):</span>
     <span class="k">try</span><span class="p">:</span>
-      <span class="n">digest</span><span class="p">,</span> <span class="n">filename</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; *&#39;</span><span class="p">)</span>
-      <span class="n">verification</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span><span class="o">.</span><span class="n">verify</span><span class="p">(</span><span class="n">digest</span><span class="p">,</span> <span class="s1">&#39;md5&#39;</span><span class="p">)</span>
+      <span class="n">digest</span><span class="p">,</span> <span class="n">filename</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; *&quot;</span><span class="p">)</span>
+      <span class="n">verification</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span><span class="o">.</span><span class="n">verify</span><span class="p">(</span><span class="n">digest</span><span class="p">,</span> <span class="s2">&quot;md5&quot;</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">split_failed</span><span class="p">:</span>
       <span class="k">continue</span>
     <span class="k">except</span> <span class="ne">FileNotFoundError</span> <span class="k">as</span> <span class="n">verify_failed</span><span class="p">:</span>
-      <span class="n">tag</span> <span class="o">=</span> <span class="s1">&#39;missing&#39;</span>
+      <span class="n">tag</span> <span class="o">=</span> <span class="s2">&quot;missing&quot;</span>
       <span class="n">miss</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="k">else</span><span class="p">:</span>
       <span class="k">if</span> <span class="n">verification</span><span class="p">:</span>
-        <span class="n">tag</span> <span class="o">=</span> <span class="s1">&#39;ok&#39;</span>
+        <span class="n">tag</span> <span class="o">=</span> <span class="s2">&quot;ok&quot;</span>
         <span class="n">ok</span> <span class="o">+=</span> <span class="mi">1</span>
       <span class="k">else</span><span class="p">:</span>
-        <span class="n">tag</span> <span class="o">=</span> <span class="s1">&#39;fail&#39;</span>
+        <span class="n">tag</span> <span class="o">=</span> <span class="s2">&quot;fail&quot;</span>
         <span class="n">fail</span> <span class="o">+=</span> <span class="mi">1</span>
 
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">tag</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">digest</span><span class="p">),</span><span class="w"> </span><span class="s2">&quot;.&quot;</span><span class="p">)</span><span class="si">}</span><span class="s1"> *</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
-  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">ok: </span><span class="si">{</span><span class="n">ok</span><span class="si">:</span><span class="s1">&lt;5</span><span class="si">}</span><span class="s1"> fail: </span><span class="si">{</span><span class="n">fail</span><span class="si">:</span><span class="s1">&lt;5</span><span class="si">}</span><span class="s1"> missing: </span><span class="si">{</span><span class="n">miss</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">ok: </span><span class="si">{</span><span class="n">ok</span><span class="si">:</span><span class="s2">&lt;5</span><span class="si">}</span><span class="s2"> fail: </span><span class="si">{</span><span class="n">fail</span><span class="si">:</span><span class="s2">&lt;5</span><span class="si">}</span><span class="s2"> missing: </span><span class="si">{</span><span class="n">miss</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre>
 </div>
 
 <h2 id="example-4">Example 4</h2>
 
-<p>Search all pycache directories and free the memory.</p>
+<p>Search all pycache directories and free the memory and display the number of
+deleted directories and the amount of memory freed in MB.</p>
 
 <blockquote>
-  <p><code><a href="#Path.delete">Path.delete()</a></code> and <code><a href="#Path.size">Path.size()</a></code></p>
+  <p><code><a href="#Path.delete">Path.delete()</a></code>, <code><a href="#Path.size">Path.size()</a></code> and <code><a href="#ByteInt">ByteInt</a></code></p>
 </blockquote>
 
 <div class="pdoc-code codehilite">
-<pre><span></span><code><span class="n">mem</span> <span class="o">=</span> <span class="mi">0</span>
+<pre><span></span><code><span class="kn">from</span> <span class="nn">pathlibutil</span> <span class="kn">import</span> <span class="n">Path</span><span class="p">,</span> <span class="n">ByteInt</span>
+
+<span class="n">mem</span> <span class="o">=</span> <span class="n">ByteInt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
 
-<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">cache</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s1">&#39;*/__pycache__/&#39;</span><span class="p">),</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">cache</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s2">&quot;*/__pycache__/&quot;</span><span class="p">),</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
   <span class="n">cache_size</span> <span class="o">=</span> <span class="n">cache</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
   <span class="k">try</span><span class="p">:</span>
     <span class="n">cache</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
   <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Failed to delete </span><span class="si">{</span><span class="n">cache</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to delete </span><span class="si">{</span><span class="n">cache</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
   <span class="k">else</span><span class="p">:</span>
     <span class="n">mem</span> <span class="o">+=</span> <span class="n">cache_size</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1"> cache directories deleted, </span><span class="si">{</span><span class="n">mem</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="o">**</span><span class="mi">20</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> MB freed.&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> cache directories deleted, </span><span class="si">{</span><span class="n">mem</span><span class="si">:</span><span class="s2">.1mb</span><span class="si">}</span><span class="s2"> MB freed.&quot;</span><span class="p">)</span>
 </code></pre>
 </div>
 
 <h2 id="example-5">Example 5</h2>
 
-<p>Inherit from <code><a href="#Path">pathlibutil.Path</a></code> to register new a archive format.
-Specify a <code>archive</code> as keyword argument in the new subclass, which has to be the suffix without <code>.</code> of the archives.
-Implement a classmethod <code>_register_archive_format()</code> to register new archive formats.</p>
+<p>Inherit from <code><a href="#Path">pathlibutil.Path</a></code> to register new a archive format. Specify a
+<code>archive</code> as keyword argument in the new subclass, which has to be the suffix
+without <code>.</code> of the archives. Implement a classmethod <code>_register_archive_format()</code>
+to register new archive formats.</p>
 
 <blockquote>
-  <p><code><a href="#Path.make_archive">Path.make_archive()</a></code>, <code><a href="#Path.archive_formats">Path.archive_formats</a></code> and <code><a href="#Path.move">Path.move()</a></code></p>
+  <p><a href="#Path.make_archive">Path.make_archive()</a>, <a href="#Path.archive_formats">Path.archive_formats</a> and <a href="#Path.move">Path.move()</a></p>
 </blockquote>
 
 <div class="pdoc-code codehilite">
-<pre><span></span><code><span class="kn">import</span> <span class="nn">shutil</span>
+<pre><span></span><code><span class="kn">import</span> <span class="nn">pathlibutil</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
 
 
-<span class="k">class</span> <span class="nc">RegisterFooBarFormat</span><span class="p">(</span><span class="n"><a href="#Path">pathlibutil.Path</a></span><span class="p">,</span> <span class="n">archive</span><span class="o">=</span><span class="s1">&#39;foobar&#39;</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">RegisterFooBarFormat</span><span class="p">(</span><span class="n"><a href="#Path">pathlibutil.Path</a></span><span class="p">,</span> <span class="n">archive</span><span class="o">=</span><span class="s2">&quot;foobar&quot;</span><span class="p">):</span>
   <span class="nd">@classmethod</span>
   <span class="k">def</span> <span class="nf">_register_archive_format</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; </span>
-<span class="sd">        implement new register functions for given `archive`</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    implement new register functions for given `archive`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
       <span class="kn">import</span> <span class="nn">required_package_name</span>
     <span class="k">except</span> <span class="ne">ModuleNotFoundError</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">ModuleNotFoundError</span><span class="p">(</span>
-          <span class="s1">&#39;pip install &lt;required_package_name&gt;&#39;</span>
-      <span class="p">)</span>
+      <span class="k">raise</span> <span class="ne">ModuleNotFoundError</span><span class="p">(</span><span class="s2">&quot;pip install &lt;required_package_name&gt;&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">pack_foobar</span><span class="p">(</span><span class="n">base_name</span><span class="p">,</span> <span class="n">base_dir</span><span class="p">,</span> <span class="n">owner</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dry_run</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">pack_foobar</span><span class="p">(</span>
+        <span class="n">base_name</span><span class="p">,</span> <span class="n">base_dir</span><span class="p">,</span> <span class="n">owner</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dry_run</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">      </span><span class="sd">&quot;&quot;&quot;callable that will be used to unpack archives.</span>
 
 <span class="sd">      Args:</span>
@@ -318,10 +347,10 @@ Implement a classmethod <code>_register_archive_format()</code> to register new 
 <span class="sd">      Returns:</span>
 <span class="sd">          str: path of the new created archive</span>
 <span class="sd">      &quot;&quot;&quot;</span>
-      <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;implement your own pack function&#39;</span><span class="p">)</span>
+      <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;implement your own pack function&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">unpack_foobar</span><span class="p">(</span><span class="n">archive</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">extra_args</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">      </span><span class="sd">&quot;&quot;&quot;callable that will be used to unpack archives. </span>
+<span class="w">      </span><span class="sd">&quot;&quot;&quot;callable that will be used to unpack archives.</span>
 
 <span class="sd">      Args:</span>
 <span class="sd">          archive (`str`): path of the archive</span>
@@ -329,25 +358,23 @@ Implement a classmethod <code>_register_archive_format()</code> to register new 
 <span class="sd">          filter (`Any`, optional): as passed in `unpack_archive(*args, filter=None, **kwargs)`. Defaults to None.</span>
 <span class="sd">          extra_args (`Sequence[Tuple[name, value]]`, optional): additional keyword arguments, specified by `register_unpack_format(*args, extra_args=None, **kwargs)`. Defaults to None.</span>
 <span class="sd">      &quot;&quot;&quot;</span>
-      <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;implement your own unpack function&#39;</span><span class="p">)</span>
+      <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;implement your own unpack function&quot;</span><span class="p">)</span>
 
     <span class="n"><a href="shutil.html#register_archive_format">shutil.register_archive_format</a></span><span class="p">(</span>
-        <span class="s1">&#39;foobar&#39;</span><span class="p">,</span> <span class="n">pack_foobar</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;foobar archives&#39;</span>
+        <span class="s2">&quot;foobar&quot;</span><span class="p">,</span> <span class="n">pack_foobar</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;foobar archives&quot;</span>
     <span class="p">)</span>
-    <span class="n"><a href="shutil.html#register_unpack_format">shutil.register_unpack_format</a></span><span class="p">(</span>
-        <span class="s1">&#39;foobar&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;.foo.bar&#39;</span><span class="p">],</span> <span class="n">unpack_foobar</span>
-    <span class="p">)</span>
+    <span class="n"><a href="shutil.html#register_unpack_format">shutil.register_unpack_format</a></span><span class="p">(</span><span class="s2">&quot;foobar&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;.foo.bar&quot;</span><span class="p">],</span> <span class="n">unpack_foobar</span><span class="p">)</span>
 
 
-<span class="n">file</span> <span class="o">=</span> <span class="n"><a href="#Path">pathlibutil.Path</a></span><span class="p">(</span><span class="s1">&#39;README.md&#39;</span><span class="p">)</span>
+<span class="n">file</span> <span class="o">=</span> <span class="n"><a href="#Path">pathlibutil.Path</a></span><span class="p">(</span><span class="s2">&quot;README.md&quot;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;available archive formats: </span><span class="si">{</span><span class="n">file</span><span class="o">.</span><span class="n">archive_formats</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-<span class="n">archive</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">make_archive</span><span class="p">(</span><span class="s1">&#39;README.foo.bar&#39;</span><span class="p">)</span>
+<span class="n">archive</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">make_archive</span><span class="p">(</span><span class="s2">&quot;README.foo.bar&quot;</span><span class="p">)</span>
 
-<span class="n">backup</span> <span class="o">=</span> <span class="n">archive</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="s1">&#39;./backup/&#39;</span><span class="p">)</span>
+<span class="n">backup</span> <span class="o">=</span> <span class="n">archive</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="s2">&quot;./backup/&quot;</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;archive created: </span><span class="si">{</span><span class="n">archive</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1"> and moved to: </span><span class="si">{</span><span class="n">backup</span><span class="o">.</span><span class="n">parent</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;archive created: </span><span class="si">{</span><span class="n">archive</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> and moved to: </span><span class="si">{</span><span class="n">backup</span><span class="o">.</span><span class="n">parent</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre>
 </div>
 </div>
@@ -411,6 +438,16 @@ be the default</p>
             <div class="docstring"><p>Set of <code><a href="hashlib.html#algorithms_available">hashlib.algorithms_available</a></code> that can be passed to <code><a href="#Path.hexdigest">hexdigest()</a></code>,
 <code><a href="#Path.verify">verify()</a></code> method as <code>algorithm</code> parameter or to set the <code><a href="#Path.default_hash">default_hash</a></code>
 algorithm of the <code>__class__</code>.</p>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">Path</span><span class="p">()</span><span class="o">.</span><span class="n">algorithms_available</span>
+<span class="go">{</span>
+<span class="go">    &#39;sha384&#39;, &#39;sha3_512&#39;, &#39;blake2b&#39;, &#39;md5-sha1&#39;, &#39;sha3_256&#39;, &#39;sha3_384&#39;,</span>
+<span class="go">    &#39;sha512&#39;, &#39;sha512_256&#39;, &#39;sha3_224&#39;, &#39;sha1&#39;, &#39;md5&#39;, &#39;ripemd160&#39;, &#39;blake2s&#39;,</span>
+<span class="go">    &#39;sha256&#39;, &#39;shake_256&#39;, &#39;shake_128&#39;, &#39;sha224&#39;, &#39;sha512_224&#39;, &#39;sm3&#39;</span>
+<span class="go">}</span>
+</code></pre>
+</div>
 </div>
 
 
@@ -483,9 +520,10 @@ algorithm of the <code>__class__</code>.</p>
                             </div>
                             <div id="Path.size" class="classattr">
                                 <div class="attr function">
-            
+                    <div class="decorator">@byteint</div>
+
         <span class="def">def</span>
-        <span class="name">size</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">) -> <span class="nb">int</span>:</span></span>
+        <span class="name">size</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">) -> <span class="n"><a href="#ByteInt">ByteInt</a></span>:</span></span>
 
         
     </div>
@@ -502,7 +540,7 @@ algorithm of the <code>__class__</code>.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">copy</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">dst</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="n">exist_ok</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>, </span><span class="param"><span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">) -> <span class="n"><a href="#Path">Path</a></span>:</span></span>
+        <span class="name">copy</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">dst</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="n">exist_ok</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>, </span><span class="param"><span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">) -> <span class="o">~</span><span class="n">_Path</span>:</span></span>
 
         
     </div>
@@ -550,7 +588,7 @@ directory does not exist.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">move</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">dst</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#Path">Path</a></span>:</span></span>
+        <span class="name">move</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">dst</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="o">~</span><span class="n">_Path</span>:</span></span>
 
         
     </div>
@@ -569,7 +607,7 @@ directory does not exist.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">make_archive</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">archivename</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">) -> <span class="n"><a href="#Path">Path</a></span>:</span></span>
+        <span class="name">make_archive</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">archivename</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">) -> <span class="o">~</span><span class="n">_Path</span>:</span></span>
 
         
     </div>
@@ -593,7 +631,7 @@ directory does not exist.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">unpack_archive</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">extract_dir</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">) -> <span class="n"><a href="#Path">Path</a></span>:</span></span>
+        <span class="name">unpack_archive</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">extract_dir</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">) -> <span class="o">~</span><span class="n">_Path</span>:</span></span>
 
         
     </div>
@@ -626,6 +664,12 @@ extracted files.</p>
 <p>The set contains all built-in formats from <code><a href="shutil.html#get_archive_formats">shutil.get_archive_formats()</a></code>
 and all formats registered by subclasse
 (eg. <a href="#Register7zFormat">Register7zFormat</a>).</p>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">Path</span><span class="p">()</span><span class="o">.</span><span class="n">archive_formats</span>
+<span class="go">{&#39;xztar&#39;, &#39;bztar&#39;, &#39;gztar&#39;, &#39;zip&#39;, &#39;tar&#39;, &#39;7z&#39;}</span>
+</code></pre>
+</div>
 </div>
 
 
@@ -831,6 +875,146 @@ call of <code><a href="#Register7zFormat.make_archive">make_archive()</a></code>
             </div>
                                 </dl>
                             </div>
+                </section>
+                <section id="ByteInt">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">ByteInt</span><wbr>(<span class="base"><a href="builtins.html#int">builtins.int</a></span>):
+
+        
+    </div>
+    <a class="headerlink" href="#ByteInt"></a>
+    
+            <div class="docstring"><p>Inherit from <code>int</code> with attributes to convert bytes to decimal or binary <code><a href="#ByteInt.units">units</a></code> for
+measuring storage data. These attributes will return a <code>float</code></p>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">ByteInt</span><span class="p">(</span><span class="mi">1234</span><span class="p">)</span><span class="o">.</span><span class="n">kb</span>
+<span class="go">1.234</span>
+</code></pre>
+</div>
+
+<p>f-string formatting is also supported</p>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ByteInt</span><span class="p">(</span><span class="mi">6543210</span><span class="p">)</span><span class="si">:</span><span class="s2">.2mib</span><span class="si">}</span><span class="s2"> mebibytes&quot;</span>
+<span class="go">&#39;6.24 mebibytes&#39;</span>
+</code></pre>
+</div>
+</div>
+
+
+                            <div id="ByteInt.units" class="classattr">
+                                <div class="attr variable">
+            <span class="name">units</span><span class="annotation">: Set[str]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ByteInt.units"></a>
+    
+            <div class="docstring"><p><code>decimal</code> and <code>binary</code> units for measuring storage data.</p>
+
+<ul>
+<li><code>kilobyte</code> and <code>kibibyte</code></li>
+<li><code>megabyte</code> and <code>mebibyte</code></li>
+<li><code>gigabyte</code> and <code>gibibyte</code></li>
+<li><code>terabyte</code> and <code>tebibyte</code></li>
+<li><code>petabyte</code> and <code>pebibyte</code></li>
+<li><code>exabyte</code> and <code>exbibyte</code></li>
+<li><code>zettabyte</code> and <code>zebibyte</code></li>
+<li><code>yottabyte</code> and <code>yobibyte</code></li>
+</ul>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">ByteInt</span><span class="p">()</span><span class="o">.</span><span class="n">units</span>
+<span class="go">{</span>
+<span class="go">    &#39;mib&#39;, &#39;eb&#39;, &#39;kib&#39;, &#39;gb&#39;, &#39;yb&#39;, &#39;mb&#39;, &#39;gib&#39;, &#39;eib&#39;,</span>
+<span class="go">    &#39;zb&#39;, &#39;yib&#39;, &#39;tib&#39;, &#39;pb&#39;, &#39;zib&#39;, &#39;pib&#39;, &#39;tb&#39;, &#39;kb&#39;</span>
+<span class="go">}</span>
+</code></pre>
+</div>
+</div>
+
+
+                            </div>
+                            <div id="ByteInt.info" class="classattr">
+                                <div class="attr function">
+                    <div class="decorator">@classmethod</div>
+
+        <span class="def">def</span>
+        <span class="name">info</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">cls</span>, </span><span class="param"><span class="n">unit</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#ByteInt.info"></a>
+    
+            <div class="docstring"><p>Return a tuple containing <code>bytes</code> and <code>name</code> for a given <code>unit</code></p>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n"><a href="#ByteInt.info">ByteInt.info</a></span><span class="p">(</span><span class="s2">&quot;gib&quot;</span><span class="p">)</span>
+<span class="go">(1073741824, &#39;gibibyte&#39;)</span>
+</code></pre>
+</div>
+</div>
+
+
+                            </div>
+                            <div class="inherited">
+                                <h5>Inherited Members</h5>
+                                <dl>
+                                    <div><dt><a href="builtins.html#int">builtins.int</a></dt>
+                                <dd id="ByteInt.conjugate" class="function"><a href="builtins.html#int.conjugate">conjugate</a></dd>
+                <dd id="ByteInt.bit_length" class="function"><a href="builtins.html#int.bit_length">bit_length</a></dd>
+                <dd id="ByteInt.bit_count" class="function"><a href="builtins.html#int.bit_count">bit_count</a></dd>
+                <dd id="ByteInt.to_bytes" class="function"><a href="builtins.html#int.to_bytes">to_bytes</a></dd>
+                <dd id="ByteInt.from_bytes" class="function"><a href="builtins.html#int.from_bytes">from_bytes</a></dd>
+                <dd id="ByteInt.as_integer_ratio" class="function"><a href="builtins.html#int.as_integer_ratio">as_integer_ratio</a></dd>
+                <dd id="ByteInt.real" class="variable"><a href="builtins.html#int.real">real</a></dd>
+                <dd id="ByteInt.imag" class="variable"><a href="builtins.html#int.imag">imag</a></dd>
+                <dd id="ByteInt.numerator" class="variable"><a href="builtins.html#int.numerator">numerator</a></dd>
+                <dd id="ByteInt.denominator" class="variable"><a href="builtins.html#int.denominator">denominator</a></dd>
+
+            </div>
+                                </dl>
+                            </div>
+                </section>
+                <section id="byteint">
+                    <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">byteint</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">func</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#byteint"></a>
+    
+            <div class="docstring"><p>Decorator to convert a return value of  <code>int</code> to a <code><a href="#ByteInt">ByteInt</a></code> object. Other return
+values are returned as is.</p>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="n">randbyte</span> <span class="o">=</span> <span class="n">byteint</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">)</span>
+
+<span class="nd">@byteint</span>
+<span class="k">def</span> <span class="nf">randhexbyte</span><span class="p">():</span>
+    <span class="k">return</span> <span class="nb">hex</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="mi">32</span><span class="p">))</span>
+</code></pre>
+</div>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">randbyte</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="mi">32</span><span class="p">))</span>
+<span class="go">&lt;class &#39;<a href="#ByteInt">ByteInt</a>&#39;&gt;</span>
+</code></pre>
+</div>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">randhexbytes</span><span class="p">())</span>
+<span class="go">&lt;class &#39;str&#39;&gt;</span>
+</code></pre>
+</div>
+</div>
+
+
                 </section>
     </main>
 <script>
