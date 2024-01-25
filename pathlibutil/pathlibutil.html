@@ -79,6 +79,12 @@
                         <li>
                                 <a class="variable" href="#Path.archive_formats">archive_formats</a>
                         </li>
+                        <li>
+                                <a class="function" href="#Path.stat">stat</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#Path.with_suffix">with_suffix</a>
+                        </li>
                 </ul>
 
             </li>
@@ -95,6 +101,9 @@
                                 <a class="variable" href="#ByteInt.units">units</a>
                         </li>
                         <li>
+                                <a class="function" href="#ByteInt.string">string</a>
+                        </li>
+                        <li>
                                 <a class="function" href="#ByteInt.info">info</a>
                         </li>
                 </ul>
@@ -102,6 +111,36 @@
             </li>
             <li>
                     <a class="function" href="#byteint">byteint</a>
+            </li>
+            <li>
+                    <a class="class" href="#TimeInt">TimeInt</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="function" href="#TimeInt.__init__">TimeInt</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TimeInt.format">format</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TimeInt.timezone">timezone</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TimeInt.datetime">datetime</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#TimeInt.string">string</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#StatResult">StatResult</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="function" href="#StatResult.__init__">StatResult</a>
+                        </li>
+                </ul>
+
             </li>
     </ul>
 
@@ -137,7 +176,10 @@ pathlibutil    </h1>
 <ul>
 <li><code><a href="#Path.hexdigest">Path.hexdigest()</a></code> to calculate and <code><a href="#Path.verify">Path.verify()</a></code> for verification of hexdigest from a file</li>
 <li><code><a href="#Path.default_hash">Path.default_hash</a></code> to configurate default hash algorithm for <code><a href="#Path">Path</a></code> class (default: <em>'md5'</em>)</li>
-<li><code><a href="#Path.size">Path.size()</a></code> to get size in bytes of a file or directory</li>
+<li><code><a href="#Path.size">Path.size()</a></code> to get size in bytes of a file or directory
+<ul>
+<li><code><a href="#byteint">byteint</a></code> function decorator converts the return value of <code>int</code> to a <code><a href="#ByteInt">ByteInt</a></code> object</li>
+</ul></li>
 <li><code><a href="#Path.read_lines">Path.read_lines()</a></code> to yield over all lines from a file until EOF</li>
 <li><code>contextmanager</code> to change current working directory with <code>with</code> statement</li>
 <li><code><a href="#Path.copy">Path.copy()</a></code> copy a file or directory to a new path destination</li>
@@ -145,7 +187,11 @@ pathlibutil    </h1>
 <li><code><a href="#Path.move">Path.move()</a></code> move a file or directory to a new path destination</li>
 <li><code><a href="#Path.make_archive">Path.make_archive()</a></code> creates and <code><a href="#Path.unpack_archive">Path.unpack_archive()</a></code> uncompresses an archive from a file or directory</li>
 <li><code><a href="#Path.archive_formats">Path.archive_formats</a></code> to get all available archive formats</li>
-<li><code><a href="#byteint">byteint</a></code> function decorator to convert return value of <code>int</code> to a <code><a href="#ByteInt">ByteInt</a></code> object</li>
+<li><code><a href="#Path.stat">Path.stat()</a></code> returns a <code><a href="#StatResult">StatResult</a></code> object to get file or directory information containing
+<ul>
+<li><code><a href="#TimeInt">TimeInt</a></code> objects for <code>atime</code>, <code>ctime</code>, <code>mtime</code> and <code>birthtime</code></li>
+<li><code><a href="#ByteInt">ByteInt</a></code> object for <code>size</code></li>
+</ul></li>
 </ul>
 
 <h2 id="installation">Installation</h2>
@@ -338,7 +384,7 @@ to register new archive formats.</p>
 
 <span class="sd">      Args:</span>
 <span class="sd">          base_name (`str`): name of the file to create</span>
-<span class="sd">          base_dir (`str`): directory to start archiving from, defaults to `os.curdir`</span>
+<span class="sd">          base_dir (`str`): directory to start archiving from, defaults to `<a href="os.html#curdir">os.curdir</a>`</span>
 <span class="sd">          owner (`Any`, optional): as passed in `make_archive(*args, owner=None, **kwargs)`. Defaults to None.</span>
 <span class="sd">          group (`Any`, optional): as passed in `make_archive(*args, group=None, **kwargs)`. Defaults to None.</span>
 <span class="sd">          dry_run (`Any`, optional): as passed in `make_archive(*args, dry_run=None, **kwargs)`. Defaults to None.</span>
@@ -387,7 +433,7 @@ to register new archive formats.</p>
                     <div class="attr class">
             
     <span class="def">class</span>
-    <span class="name">Path</span><wbr>(<span class="base"><a href="pathlib.html#Path">pathlib.Path</a></span>):
+    <span class="name">Path</span><wbr>(<span class="base">pathlibutil.base.BasePath</span>):
 
         
     </div>
@@ -531,7 +577,7 @@ algorithm of the <code>__class__</code>.</p>
     
             <div class="docstring"><p>Returns the size in bytes of a file or directory.</p>
 
-<p>For <code>**kwargs</code> see <code><a href="#Path.stat">Path.stat()</a></code>.</p>
+<p>For <code>**kwargs</code> see <code><a href="pathlib.html#Path.stat">pathlib.Path.stat()</a></code>.</p>
 </div>
 
 
@@ -607,13 +653,19 @@ directory does not exist.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">make_archive</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">archivename</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">) -> <span class="o">~</span><span class="n">_Path</span>:</span></span>
+        <span class="name">make_archive</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">archivename</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="o">*</span>, </span><span class="param"><span class="n">exists_ok</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>, </span><span class="param"><span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">) -> <span class="o">~</span><span class="n">_Path</span>:</span></span>
 
         
     </div>
     <a class="headerlink" href="#Path.make_archive"></a>
     
             <div class="docstring"><p>Creates an archive file (eg. zip) and returns the path to the archive.</p>
+
+<p>If <code>exists_ok</code> is <code>False</code> a <code>FileExistsError</code> is raised if the archive file
+already exists.</p>
+
+<p>If <code>exists_ok</code> is <code>True</code> the existing archive file will be deleted before
+creating the new one.</p>
 
 <p>For <code>**kwargs</code> see <code><a href="shutil.html#make_archive">shutil.make_archive()</a></code>.</p>
 
@@ -623,6 +675,18 @@ directory does not exist.</p>
 <li>It can be overwritten with an <code>format</code> keyword-argument.</li>
 <li>a <code>ValueError</code> is raised if the <code>format</code> is unknown.</li>
 </ul>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">make_archive</span><span class="p">(</span><span class="s1">&#39;test.tar.gz&#39;</span><span class="p">)</span>
+<span class="go">Path(&#39;test.tar.gz&#39;)</span>
+</code></pre>
+</div>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">make_archive</span><span class="p">(</span><span class="s1">&#39;test.zpy&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;zip&#39;</span><span class="p">)</span>
+<span class="go">Path(&#39;test.zpy&#39;)</span>
+</code></pre>
+</div>
 </div>
 
 
@@ -647,6 +711,18 @@ extracted files.</p>
 <li>It can be overwritten with an <code>format</code> keyword-argument.</li>
 <li>a <code>ValueError</code> is raised if the <code>format</code> is unknown.</li>
 </ul>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;test.tar.gz&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">unpack_archive</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">)</span>
+<span class="go">Path(&#39;test&#39;)</span>
+</code></pre>
+</div>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;test.zpy&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">unpack_archive</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;zip&#39;</span><span class="p">)</span>
+<span class="go">Path(&#39;test&#39;)</span>
+</code></pre>
+</div>
 </div>
 
 
@@ -674,6 +750,71 @@ and all formats registered by subclasse
 
 
                             </div>
+                            <div id="Path.stat" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">stat</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">) -> <span class="o">~</span><span class="n">_stat_result</span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#Path.stat"></a>
+    
+            <div class="docstring"><p>Returns a <code><a href="#StatResult">StatResult</a></code> object which modifies following attributes:</p>
+
+<ul>
+<li><code>st_size</code> is wrapped in <code><a href="#ByteInt">ByteInt</a></code></li>
+<li><code>st_atime</code>, <code>st_mtime</code>, <code>st_ctime</code>, <code>st_birthtime</code> are wrapped in <code><a href="#TimeInt">TimeInt</a></code></li>
+</ul>
+
+<p>For <code>**kwargs</code> see <code><a href="pathlib.html#Path.stat">pathlib.Path.stat()</a></code>.</p>
+</div>
+
+
+                            </div>
+                            <div id="Path.with_suffix" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">with_suffix</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">suffix</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span></span><span class="return-annotation">) -> <span class="o">~</span><span class="n">_Path</span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#Path.with_suffix"></a>
+    
+            <div class="docstring"><p>Return a new <code><a href="#Path">Path</a></code> with changed suffix or remove it when its an empty
+string.</p>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;test.a.b&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s1">&#39;.c&#39;</span><span class="p">)</span>
+<span class="go">Path(&#39;test.a.c&#39;)</span>
+</code></pre>
+</div>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;test.a.b&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="go">Path(&#39;test.a&#39;)</span>
+</code></pre>
+</div>
+
+<p>Multiple suffixes can be changed at once by passing a list of suffixes.
+With a empty list all suffixes will be removed.</p>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;test.a.b&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">([</span><span class="s1">&#39;.c&#39;</span><span class="p">,</span> <span class="s1">&#39;.d&#39;</span><span class="p">])</span>
+<span class="go">Path(&#39;test.c.d&#39;)</span>
+</code></pre>
+</div>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;test.a.b&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">([])</span>
+<span class="go">Path(&#39;test&#39;)</span>
+</code></pre>
+</div>
+</div>
+
+
+                            </div>
                             <div class="inherited">
                                 <h5>Inherited Members</h5>
                                 <dl>
@@ -686,7 +827,6 @@ and all formats registered by subclasse
                 <dd id="Path.rglob" class="function"><a href="pathlib.html#Path.rglob">rglob</a></dd>
                 <dd id="Path.absolute" class="function"><a href="pathlib.html#Path.absolute">absolute</a></dd>
                 <dd id="Path.resolve" class="function"><a href="pathlib.html#Path.resolve">resolve</a></dd>
-                <dd id="Path.stat" class="function"><a href="pathlib.html#Path.stat">stat</a></dd>
                 <dd id="Path.owner" class="function"><a href="pathlib.html#Path.owner">owner</a></dd>
                 <dd id="Path.group" class="function"><a href="pathlib.html#Path.group">group</a></dd>
                 <dd id="Path.open" class="function"><a href="pathlib.html#Path.open">open</a></dd>
@@ -731,7 +871,6 @@ and all formats registered by subclasse
                 <dd id="Path.stem" class="variable"><a href="pathlib.html#PurePath.stem">stem</a></dd>
                 <dd id="Path.with_name" class="function"><a href="pathlib.html#PurePath.with_name">with_name</a></dd>
                 <dd id="Path.with_stem" class="function"><a href="pathlib.html#PurePath.with_stem">with_stem</a></dd>
-                <dd id="Path.with_suffix" class="function"><a href="pathlib.html#PurePath.with_suffix">with_suffix</a></dd>
                 <dd id="Path.relative_to" class="function"><a href="pathlib.html#PurePath.relative_to">relative_to</a></dd>
                 <dd id="Path.is_relative_to" class="function"><a href="pathlib.html#PurePath.is_relative_to">is_relative_to</a></dd>
                 <dd id="Path.parts" class="variable"><a href="pathlib.html#PurePath.parts">parts</a></dd>
@@ -805,6 +944,8 @@ call of <code><a href="#Register7zFormat.make_archive">make_archive()</a></code>
                 <dd id="Register7zFormat.make_archive" class="function"><a href="#Path.make_archive">make_archive</a></dd>
                 <dd id="Register7zFormat.unpack_archive" class="function"><a href="#Path.unpack_archive">unpack_archive</a></dd>
                 <dd id="Register7zFormat.archive_formats" class="variable"><a href="#Path.archive_formats">archive_formats</a></dd>
+                <dd id="Register7zFormat.stat" class="function"><a href="#Path.stat">stat</a></dd>
+                <dd id="Register7zFormat.with_suffix" class="function"><a href="#Path.with_suffix">with_suffix</a></dd>
 
             </div>
             <div><dt><a href="pathlib.html#Path">pathlib.Path</a></dt>
@@ -816,7 +957,6 @@ call of <code><a href="#Register7zFormat.make_archive">make_archive()</a></code>
                 <dd id="Register7zFormat.rglob" class="function"><a href="pathlib.html#Path.rglob">rglob</a></dd>
                 <dd id="Register7zFormat.absolute" class="function"><a href="pathlib.html#Path.absolute">absolute</a></dd>
                 <dd id="Register7zFormat.resolve" class="function"><a href="pathlib.html#Path.resolve">resolve</a></dd>
-                <dd id="Register7zFormat.stat" class="function"><a href="pathlib.html#Path.stat">stat</a></dd>
                 <dd id="Register7zFormat.owner" class="function"><a href="pathlib.html#Path.owner">owner</a></dd>
                 <dd id="Register7zFormat.group" class="function"><a href="pathlib.html#Path.group">group</a></dd>
                 <dd id="Register7zFormat.open" class="function"><a href="pathlib.html#Path.open">open</a></dd>
@@ -861,7 +1001,6 @@ call of <code><a href="#Register7zFormat.make_archive">make_archive()</a></code>
                 <dd id="Register7zFormat.stem" class="variable"><a href="pathlib.html#PurePath.stem">stem</a></dd>
                 <dd id="Register7zFormat.with_name" class="function"><a href="pathlib.html#PurePath.with_name">with_name</a></dd>
                 <dd id="Register7zFormat.with_stem" class="function"><a href="pathlib.html#PurePath.with_stem">with_stem</a></dd>
-                <dd id="Register7zFormat.with_suffix" class="function"><a href="pathlib.html#PurePath.with_suffix">with_suffix</a></dd>
                 <dd id="Register7zFormat.relative_to" class="function"><a href="pathlib.html#PurePath.relative_to">relative_to</a></dd>
                 <dd id="Register7zFormat.is_relative_to" class="function"><a href="pathlib.html#PurePath.is_relative_to">is_relative_to</a></dd>
                 <dd id="Register7zFormat.parts" class="variable"><a href="pathlib.html#PurePath.parts">parts</a></dd>
@@ -887,7 +1026,7 @@ call of <code><a href="#Register7zFormat.make_archive">make_archive()</a></code>
     <a class="headerlink" href="#ByteInt"></a>
     
             <div class="docstring"><p>Inherit from <code>int</code> with attributes to convert bytes to decimal or binary <code><a href="#ByteInt.units">units</a></code> for
-measuring storage data. These attributes will return a <code>float</code></p>
+measuring storage data. These attributes will return a <code>float</code>.</p>
 
 <div class="pdoc-code codehilite">
 <pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">ByteInt</span><span class="p">(</span><span class="mi">1234</span><span class="p">)</span><span class="o">.</span><span class="n">kb</span>
@@ -900,6 +1039,14 @@ measuring storage data. These attributes will return a <code>float</code></p>
 <div class="pdoc-code codehilite">
 <pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ByteInt</span><span class="p">(</span><span class="mi">6543210</span><span class="p">)</span><span class="si">:</span><span class="s2">.2mib</span><span class="si">}</span><span class="s2"> mebibytes&quot;</span>
 <span class="go">&#39;6.24 mebibytes&#39;</span>
+</code></pre>
+</div>
+
+<p>String representation of <code><a href="#ByteInt">ByteInt</a></code> will return the most appropriate decimal unit.</p>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">ByteInt</span><span class="p">(</span><span class="mi">987654</span><span class="p">))</span>
+<span class="go">&#39;987.7 kb&#39;</span>
 </code></pre>
 </div>
 </div>
@@ -932,6 +1079,29 @@ measuring storage data. These attributes will return a <code>float</code></p>
 <span class="go">    &#39;mib&#39;, &#39;eb&#39;, &#39;kib&#39;, &#39;gb&#39;, &#39;yb&#39;, &#39;mb&#39;, &#39;gib&#39;, &#39;eib&#39;,</span>
 <span class="go">    &#39;zb&#39;, &#39;yib&#39;, &#39;tib&#39;, &#39;pb&#39;, &#39;zib&#39;, &#39;pib&#39;, &#39;tb&#39;, &#39;kb&#39;</span>
 <span class="go">}</span>
+</code></pre>
+</div>
+</div>
+
+
+                            </div>
+                            <div id="ByteInt.string" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">string</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">decimal</span><span class="o">=</span><span class="kc">True</span></span><span class="return-annotation">) -> <span class="nb">str</span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#ByteInt.string"></a>
+    
+            <div class="docstring"><p>Return a string representation of <code>self</code> in the most appropriate unit.</p>
+
+<p>If <code>decimal</code> is <code>False</code> then binary units will be used instead of <code>decimal</code>.</p>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">ByteInt</span><span class="p">(</span><span class="mi">12346789</span><span class="p">)</span><span class="o">.</span><span class="n">string</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">&#39;11.77 mib&#39;</span>
 </code></pre>
 </div>
 </div>
@@ -1015,6 +1185,163 @@ values are returned as is.</p>
 </div>
 
 
+                </section>
+                <section id="TimeInt">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">TimeInt</span><wbr>(<span class="base"><a href="builtins.html#float">builtins.float</a></span>):
+
+        
+    </div>
+    <a class="headerlink" href="#TimeInt"></a>
+    
+            <div class="docstring"><p>Inherit from <code>float</code> with attributes to convert seconds to <code><a href="#TimeInt.datetime">datetime</a></code> objects.</p>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">TimeInt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">datetime</span>
+<span class="go"><a href="datetime.html#datetime">datetime.datetime</a>(1970, 1, 1, 0, 0)</span>
+</code></pre>
+</div>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">TimeInt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">string</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">.%m.%Y&#39;</span><span class="p">)</span>
+<span class="go">&#39;01.01.1970&#39;</span>
+</code></pre>
+</div>
+
+<p>Return a string representation using <code><a href="#TimeInt.format">TimeInt.format</a></code>.</p>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">TimeInt</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="go">&#39;1970-01-01 00:00:00&#39;</span>
+</code></pre>
+</div>
+</div>
+
+
+                            <div id="TimeInt.__init__" class="classattr">
+                                <div class="attr function">
+            
+        <span class="name">TimeInt</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">value</span><span class="p">:</span> <span class="nb">int</span>, </span><span class="param"><span class="n">tz</span><span class="p">:</span> <span class="n"><a href="datetime.html#tzinfo">datetime.tzinfo</a></span> <span class="o">=</span> <span class="kc">None</span></span>)</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimeInt.__init__"></a>
+    
+            <div class="docstring"><p>Create a new instance from baseclass <code>int</code> with optional <code><a href="#TimeInt.timezone">timezone</a></code> info.</p>
+</div>
+
+
+                            </div>
+                            <div id="TimeInt.format" class="classattr">
+                                <div class="attr variable">
+            <span class="name">format</span>        =
+<span class="default_value">&#39;%Y-%m-%d %H:%M:%S&#39;</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimeInt.format"></a>
+    
+            <div class="docstring"><p>Format string to which is uesed to convert <code>self</code> to a string. Default: 'isoformat'.
+For more information see <code><a href="datetime.html#datetime.strftime">datetime.datetime.strftime</a></code>.</p>
+</div>
+
+
+                            </div>
+                            <div id="TimeInt.timezone" class="classattr">
+                                <div class="attr variable">
+            <span class="name">timezone</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimeInt.timezone"></a>
+    
+            <div class="docstring"><p>property for <code><a href="datetime.html#timezone">datetime.timezone</a></code> object is set with <code><a href="#TimeInt.__init__">__init__</a></code> or can be
+changed to different timezones to get the correct string reprensentation. If
+timezone is <code>None</code> then the local timezone is used.</p>
+</div>
+
+
+                            </div>
+                            <div id="TimeInt.datetime" class="classattr">
+                                <div class="attr variable">
+            <span class="name">datetime</span><span class="annotation">: <a href="datetime.html#datetime">datetime.datetime</a></span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimeInt.datetime"></a>
+    
+            <div class="docstring"><p>property returns a <code><a href="datetime.html#datetime">datetime.datetime</a></code> object.</p>
+</div>
+
+
+                            </div>
+                            <div id="TimeInt.string" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">string</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">format_string</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="nb">str</span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimeInt.string"></a>
+    
+            <div class="docstring"><p>Return a string representation of <code><a href="#TimeInt.datetime">datetime</a></code> using the <code>format_string</code>.</p>
+
+<p>If <code>format_string</code> is <code>None</code> then <code><a href="#TimeInt.format">TimeInt.format</a></code> is used.</p>
+</div>
+
+
+                            </div>
+                            <div class="inherited">
+                                <h5>Inherited Members</h5>
+                                <dl>
+                                    <div><dt><a href="builtins.html#float">builtins.float</a></dt>
+                                <dd id="TimeInt.conjugate" class="function"><a href="builtins.html#float.conjugate">conjugate</a></dd>
+                <dd id="TimeInt.as_integer_ratio" class="function"><a href="builtins.html#float.as_integer_ratio">as_integer_ratio</a></dd>
+                <dd id="TimeInt.fromhex" class="function"><a href="builtins.html#float.fromhex">fromhex</a></dd>
+                <dd id="TimeInt.hex" class="function"><a href="builtins.html#float.hex">hex</a></dd>
+                <dd id="TimeInt.is_integer" class="function"><a href="builtins.html#float.is_integer">is_integer</a></dd>
+                <dd id="TimeInt.real" class="variable"><a href="builtins.html#float.real">real</a></dd>
+                <dd id="TimeInt.imag" class="variable"><a href="builtins.html#float.imag">imag</a></dd>
+
+            </div>
+                                </dl>
+                            </div>
+                </section>
+                <section id="StatResult">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">StatResult</span>:
+
+        
+    </div>
+    <a class="headerlink" href="#StatResult"></a>
+    
+            <div class="docstring"><p>Object converts <code>st_size</code> to <code><a href="#ByteInt">ByteInt</a></code> and
+<code>st_atime</code>, <code>st_mtime</code>, <code>st_ctime</code> and <code>st_birthtime</code> to <code><a href="#TimeInt">TimeInt</a></code>.</p>
+
+<p>Inheritance was not possible due <code>@final</code> decorator is applied to <code><a href="os.html#stat_result">os.stat_result</a></code>
+to prevent subclassing.</p>
+</div>
+
+
+                            <div id="StatResult.__init__" class="classattr">
+                                <div class="attr function">
+            
+        <span class="name">StatResult</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">stat</span></span>)</span>
+
+        
+    </div>
+    <a class="headerlink" href="#StatResult.__init__"></a>
+    
+            <div class="docstring"><p>Wrapper for <code><a href="os.html#stat_result">os.stat_result</a></code>.</p>
+</div>
+
+
+                            </div>
                 </section>
     </main>
 <script>

@@ -286,12 +286,12 @@ an Error exception at the end of the copy process.</p>
 
 <p>You can set the optional ignore_dangling_symlinks flag to true if you
 want to silence this exception. Notice that this has no effect on
-platforms that don't support os.symlink.</p>
+platforms that don't support <a href="os.html#symlink">os.symlink</a>.</p>
 
 <p>The optional ignore argument is a callable. If given, it
 is called with the <code>src</code> parameter, which is the directory
 being visited by copytree(), and <code>names</code> which is the list of
-<code>src</code> contents, as returned by os.listdir():</p>
+<code>src</code> contents, as returned by <a href="os.html#listdir">os.listdir()</a>:</p>
 
 <pre><code>callable(src, names) -&gt; ignored_names
 </code></pre>
@@ -334,11 +334,11 @@ is moved inside the directory. The destination path must not already
 exist.</p>
 
 <p>If the destination already exists but is not a directory, it may be
-overwritten depending on os.rename() semantics.</p>
+overwritten depending on <a href="os.html#rename">os.rename()</a> semantics.</p>
 
 <p>If the destination is on our current filesystem, then rename() is used.
 Otherwise, src is copied to the destination and then removed. Symlinks are
-recreated under the new name if os.rename() fails because of cross
+recreated under the new name if <a href="os.html#rename">os.rename()</a> fails because of cross
 filesystem renames.</p>
 
 <p>The optional <code>copy_function</code> argument is a callable that will be used
@@ -709,7 +709,7 @@ they are converted to their respective uid/gid.</p>
 conforms to the given mode on the PATH, or None if there is no such
 file.</p>
 
-<p><code>mode</code> defaults to os.F_OK | os.X_OK. <code>path</code> defaults to the result
+<p><code>mode</code> defaults to <a href="os.html#F_OK">os.F_OK</a> | <a href="os.html#X_OK">os.X_OK</a>. <code>path</code> defaults to the result
 of os.environ.get("PATH"), or can be overridden with a custom search
 path.</p>
 </div>
@@ -734,7 +734,7 @@ the value is a positive integer, it is used.</p>
 
 <p>When COLUMNS or LINES is not defined, which is the common case,
 the terminal connected to sys.__stdout__ is queried
-by invoking os.get_terminal_size.</p>
+by invoking <a href="os.html#get_terminal_size">os.get_terminal_size</a>.</p>
 
 <p>If the terminal size cannot be successfully queried, either because
 the system doesn't support querying, or because we are not
@@ -742,7 +742,7 @@ connected to a terminal, the value given in fallback parameter
 is used. Fallback defaults to (80, 24) which is the default
 size used by many terminal emulators.</p>
 
-<p>The value returned is a named tuple of type os.terminal_size.</p>
+<p>The value returned is a named tuple of type <a href="os.html#terminal_size">os.terminal_size</a>.</p>
 </div>
 
 

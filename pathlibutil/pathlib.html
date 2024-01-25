@@ -795,7 +795,7 @@ but cannot instantiate a WindowsPath on a POSIX system or vice versa.</p>
     <a class="headerlink" href="#Path.cwd"></a>
     
             <div class="docstring"><p>Return a new path pointing to the current working directory
-(as returned by os.getcwd()).</p>
+(as returned by <a href="os.html#getcwd">os.getcwd()</a>).</p>
 </div>
 
 
@@ -927,7 +927,7 @@ normalizing it.</p>
     <a class="headerlink" href="#Path.stat"></a>
     
             <div class="docstring"><p>Return the result of the stat() system call on this path, like
-os.stat() does.</p>
+<a href="os.html#stat">os.stat()</a> does.</p>
 </div>
 
 
@@ -1093,7 +1093,7 @@ the built-in open() function does.</p>
     </div>
     <a class="headerlink" href="#Path.chmod"></a>
     
-            <div class="docstring"><p>Change the permissions of the path, like os.chmod().</p>
+            <div class="docstring"><p>Change the permissions of the path, like <a href="os.html#chmod">os.chmod()</a>.</p>
 </div>
 
 
@@ -1214,7 +1214,7 @@ directory of the Path object.</p>
     <a class="headerlink" href="#Path.symlink_to"></a>
     
             <div class="docstring"><p>Make this path a symlink pointing to the target path.
-Note the order of arguments (link, target) is the reverse of os.symlink.</p>
+Note the order of arguments (link, target) is the reverse of <a href="os.html#symlink">os.symlink</a>.</p>
 </div>
 
 
@@ -1231,7 +1231,7 @@ Note the order of arguments (link, target) is the reverse of os.symlink.</p>
     
             <div class="docstring"><p>Make this path a hard link pointing to the same file as <em>target</em>.</p>
 
-<p>Note the order of arguments (self, target) is the reverse of os.link's.</p>
+<p>Note the order of arguments (self, target) is the reverse of <a href="os.html#link">os.link</a>'s.</p>
 </div>
 
 
@@ -1251,7 +1251,7 @@ Note the order of arguments (link, target) is the reverse of os.symlink.</p>
 <p>Note this function does not make this path a hard link to <em>target</em>,
 despite the implication of the function and argument names. The order
 of arguments (target, link) is the reverse of <a href="#Path.symlink_to">Path.symlink_to</a>, but
-matches that of os.link.</p>
+matches that of <a href="os.html#link">os.link</a>.</p>
 
 <p>Deprecated since Python 3.10 and scheduled for removal in Python 3.12.
 Use <code><a href="#Path.hardlink_to">hardlink_to()</a></code> instead.</p>
