@@ -5376,13 +5376,13 @@ frozenset(iterable) -> frozenset object</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">issubset</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">issubset</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">other</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#frozenset.issubset"></a>
     
-            <div class="docstring"><p>Report whether another set contains this set.</p>
+            <div class="docstring"><p>Test whether every element in the set is in other.</p>
 </div>
 
 
@@ -5391,13 +5391,13 @@ frozenset(iterable) -> frozenset object</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">issuperset</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">issuperset</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">other</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#frozenset.issuperset"></a>
     
-            <div class="docstring"><p>Report whether this set contains another set.</p>
+            <div class="docstring"><p>Test whether every element in other is in the set.</p>
 </div>
 
 
@@ -6330,13 +6330,13 @@ an exception when an element is missing from the set.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">issubset</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">issubset</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">other</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#set.issubset"></a>
     
-            <div class="docstring"><p>Report whether another set contains this set.</p>
+            <div class="docstring"><p>Test whether every element in the set is in other.</p>
 </div>
 
 
@@ -6345,13 +6345,13 @@ an exception when an element is missing from the set.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">issuperset</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
+        <span class="name">issuperset</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">other</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
     <a class="headerlink" href="#set.issuperset"></a>
     
-            <div class="docstring"><p>Report whether this set contains another set.</p>
+            <div class="docstring"><p>Test whether every element in other is in the set.</p>
 </div>
 
 
@@ -6660,8 +6660,10 @@ empty strings from the result.
 </code></pre>
 
 <p>maxsplit
-    Maximum number of splits (starting from the left).
+    Maximum number of splits.
     -1 (the default value) means no limit.</p>
+
+<p>Splitting starts at the front of the string and works to the end.</p>
 
 <p>Note, <a href="#str.split">str.split()</a> is mainly useful for data that has been intentionally
 delimited.  With natural text that includes punctuation, consider using
@@ -6691,7 +6693,7 @@ empty strings from the result.
 </code></pre>
 
 <p>maxsplit
-    Maximum number of splits (starting from the left).
+    Maximum number of splits.
     -1 (the default value) means no limit.</p>
 
 <p>Splitting starts at the end of the string and works to the front.</p>

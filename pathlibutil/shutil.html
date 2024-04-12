@@ -329,12 +329,12 @@ within the <code>dst</code> tree will be overwritten by corresponding files from
 similar to the Unix "mv" command. Return the file or directory's
 destination.</p>
 
-<p>If the destination is a directory or a symlink to a directory, the source
-is moved inside the directory. The destination path must not already
-exist.</p>
+<p>If dst is an existing directory or a symlink to a directory, then src is
+moved inside that directory. The destination path in that directory must
+not already exist.</p>
 
-<p>If the destination already exists but is not a directory, it may be
-overwritten depending on <a href="os.html#rename">os.rename()</a> semantics.</p>
+<p>If dst already exists but is not a directory, it may be overwritten
+depending on <a href="os.html#rename">os.rename()</a> semantics.</p>
 
 <p>If the destination is on our current filesystem, then rename() is used.
 Otherwise, src is copied to the destination and then removed. Symlinks are
